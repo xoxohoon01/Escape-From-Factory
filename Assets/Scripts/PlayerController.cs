@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,10 +18,22 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookInput;
     private float curCamXRot;
 
+    [Header("Jump")]
+    [SerializeField] private float jumpPower;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float maxRayDistance;
+
+    [Header("Inventory")]
+    public Action onOpenInventory;
+
+    [Header("Interact")]
+    public Action onInteraction;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate()
@@ -49,6 +62,26 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles += new Vector3(0, lookInput.x * lookSensitively, 0);
     }
 
+    private bool isGrounded()
+    {
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down)
+        };
+        
+        for(int i = 0; i < rays.Length; i++)
+        {
+            if (Physics.Raycast(rays[i], maxRayDistance, groundLayer))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -69,10 +102,25 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if(context.phase == InputActionPhase.Started && isGrounded())
         {
-
+            rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            onInteraction?.Invoke();
+        }
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            onOpenInventory?.Invoke();
+        }
+    }
 }
