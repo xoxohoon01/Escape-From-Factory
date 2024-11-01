@@ -7,8 +7,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     [Header("Move")]
-    [SerializeField][Range(1, 10)] private float moveSpeed;
+    [SerializeField][Range(1, 7)] private float moveSpeed;
     private Vector2 moveInput;
+    [SerializeField][Range(5, 10)] private float maxSpeed;
+    [SerializeField] private float acceleration;
+    private float originalMoveSpeed;
 
     [Header("Look")]
     [SerializeField] private Transform camContainer;
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        originalMoveSpeed = moveSpeed;
     }
 
     private void FixedUpdate()
@@ -53,6 +57,15 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir = (transform.forward * moveInput.y + transform.right * moveInput.x).normalized;
+        if (moveInput != Vector2.zero)
+        {
+            moveSpeed = Mathf.Min(moveSpeed + acceleration * Time.fixedDeltaTime, maxSpeed);
+        }
+        else
+        {
+            moveSpeed = originalMoveSpeed;
+        }
+
         dir *= moveSpeed;
         dir.y = rb.velocity.y;
         rb.velocity = dir;
