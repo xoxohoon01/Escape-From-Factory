@@ -1,25 +1,28 @@
 using UnityEngine;
 
-public class Condition : MonoBehaviour
+[System.Serializable]
+public class Condition
 {
     public float curValue;
     public float passiveValue;
     [SerializeField] private float maxVaule;
     [SerializeField] private float startValue;
 
-    private void Start()
+    public Condition(float hp = 0)
     {
+        maxValue = hp;
+        startValue = hp;
         curValue = startValue;
     }
 
     public float GetPercentage()
     {
-        return curValue / maxVaule;
+        return curValue / maxValue;
     }
 
     public void Add(float amount)
     {
-        curValue = Mathf.Min(curValue + amount, maxVaule);
+        curValue = Mathf.Min(curValue + amount, maxValue);
     }
 
     public void Subtract(float amount)
