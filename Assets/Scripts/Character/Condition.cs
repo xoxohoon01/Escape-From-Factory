@@ -5,7 +5,7 @@ public class Condition
 {
     public float curValue;
     public float passiveValue;
-    [SerializeField] private float maxVaule;
+    [SerializeField] private float maxValue;
     [SerializeField] private float startValue;
 
     public Condition(float hp = 0)
