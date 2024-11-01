@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Condition : MonoBehaviour
 {
-    [SerializeField] private float curValue;
+    public float curValue;
+    public float passiveValue;
     [SerializeField] private float maxVaule;
     [SerializeField] private float startValue;
 

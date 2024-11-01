@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Unit
+public class Player : MonoBehaviour
 {
-    private PlayerController controller;
-    private PlayerCondition condition;
+    public PlayerController controller;
+    public PlayerCondition condition;
 
     private void Awake()
     {
