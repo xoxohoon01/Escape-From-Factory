@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float minXLook;
     private Vector2 lookInput;
     private float curCamXRot;
+    private bool isInvenOpen;
 
     [Header("Jump")]
     [SerializeField] private float jumpPower;
@@ -43,7 +44,10 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Look();
+        if (isInvenOpen = Cursor.lockState == CursorLockMode.Locked)
+        {
+            Look();
+        }
     }
 
     private void Move()
@@ -71,8 +75,8 @@ public class PlayerController : MonoBehaviour
             new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
             new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down)
         };
-        
-        for(int i = 0; i < rays.Length; i++)
+
+        for (int i = 0; i < rays.Length; i++)
         {
             if (Physics.Raycast(rays[i], maxRayDistance, groundLayer))
             {
@@ -102,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && isGrounded())
+        if (context.phase == InputActionPhase.Started && isGrounded())
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
@@ -110,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started)
         {
             onInteraction?.Invoke();
         }
@@ -118,9 +122,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnInventory(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started)
         {
+            OnToggle();
             onOpenInventory?.Invoke();
         }
+    }
+
+    private void OnToggle()
+    {
+        Cursor.lockState = isInvenOpen ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

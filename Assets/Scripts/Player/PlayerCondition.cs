@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerCondition : MonoBehaviour
+public class PlayerCondition : Unit
 {
     public UICondition uiCondition;
 
@@ -19,7 +19,11 @@ public class PlayerCondition : MonoBehaviour
         {
             mainBoard.Subtract(noMemoryMainBoardDecay * Time.deltaTime);
         }
+    }
 
+    public override void Ondamage(float damage)
+    {
+        mainBoard.Subtract(damage);
         if (mainBoard.curValue <= 0)
         {
             Die();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    protected virtual void Ondamage(float damage)
+    public virtual void Ondamage(float damage)
     {
 
     }
