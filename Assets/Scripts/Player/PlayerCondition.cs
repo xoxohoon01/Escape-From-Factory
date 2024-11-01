@@ -1,29 +1,38 @@
+using System;
 using UnityEngine;
 
 public class PlayerCondition : Unit
 {
     public UICondition uiCondition;
 
-    private Condition mainBoard { get { return uiCondition.mainBoard; } } //health
-    private Condition memory { get { return uiCondition.memory; } } // hunger
-    private Condition clock { get { return uiCondition.clock; } } //stamina
+    public Condition mainBoard;
+    public Condition memory;
+    public Condition clock;
+
+    public event Action onMainBoardChanged;
+    public event Action onMemoryChanged;
+    public event Action onClockChanged;
 
     [SerializeField] private float noMemoryMainBoardDecay;
 
     private void Update()
     {
         memory.Subtract(memory.passiveValue * Time.deltaTime);
+        onMemoryChanged?.Invoke();
         clock.Add(clock.passiveValue * Time.deltaTime);
+        onClockChanged?.Invoke();
 
         if (memory.curValue <= 0)
         {
             mainBoard.Subtract(noMemoryMainBoardDecay * Time.deltaTime);
+            onClockChanged?.Invoke();
         }
     }
 
     public override void Ondamage(float damage)
     {
         mainBoard.Subtract(damage);
+        onMainBoardChanged?.Invoke();
         if (mainBoard.curValue <= 0)
         {
             Die();
@@ -33,11 +42,13 @@ public class PlayerCondition : Unit
     public void HealMainBoard(float amount)
     {
         mainBoard.Add(amount);
+        onMainBoardChanged?.Invoke();
     }
 
     public void HealMemory(float amount)
     {
         memory.Add(amount);
+        onMemoryChanged?.Invoke();
     }
 
 
