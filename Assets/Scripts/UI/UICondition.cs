@@ -3,13 +3,13 @@ using UnityEngine.UI;
 
 public class UICondition : MonoBehaviour
 {
-    public Condition mainBoard;
-    public Condition memory;
-    public Condition clock;
+    public Condition HP; // MainBoard
+    public Condition Hunger; // Memory
+    public Condition Stamina; // Clock
 
-    [SerializeField] private Image mainBoardBar;
-    [SerializeField] private Image memoryBar;
-    [SerializeField] private Image clockBar;
+    [SerializeField] private Image HPBar;
+    [SerializeField] private Image HungerBar;
+    [SerializeField] private Image StaminaBar;
 
     private void Start()
     {
@@ -18,8 +18,8 @@ public class UICondition : MonoBehaviour
 
     private void Update()
     {
-        mainBoardBar.fillAmount = mainBoard.GetPercentage();
-        memoryBar.fillAmount = memory.GetPercentage();
-        clockBar.fillAmount = clock.GetPercentage();
+        HPBar.fillAmount = HP.GetPercentage();
+        HungerBar.fillAmount = Hunger.GetPercentage();
+        StaminaBar.fillAmount = Stamina.GetPercentage();
     }
 }

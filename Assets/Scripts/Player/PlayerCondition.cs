@@ -4,36 +4,36 @@ public class PlayerCondition : MonoBehaviour
 {
     public UICondition uiCondition;
 
-    private Condition mainBoard { get { return uiCondition.mainBoard; } } //health
-    private Condition memory { get { return uiCondition.memory; } } // hunger
-    private Condition clock { get { return uiCondition.clock; } } //stamina
+    private Condition HP { get { return uiCondition.HP; } } // MainBoard
+    private Condition Hunger { get { return uiCondition.Hunger; } } // Memory
+    private Condition Stamina { get { return uiCondition.Stamina; } } // Clock
 
-    [SerializeField] private float noMemoryMainBoardDecay;
+    [SerializeField] private float noHungerHPDecay;
 
     private void Update()
     {
-        memory.Subtract(memory.passiveValue * Time.deltaTime);
-        clock.Add(clock.passiveValue * Time.deltaTime);
+        Hunger.Subtract(Hunger.passiveValue * Time.deltaTime);
+        Stamina.Add(Stamina.passiveValue * Time.deltaTime);
 
-        if (memory.curValue <= 0)
+        if (Hunger.curValue <= 0)
         {
-            mainBoard.Subtract(noMemoryMainBoardDecay * Time.deltaTime);
+            HP.Subtract(noHungerHPDecay * Time.deltaTime);
         }
 
-        if (mainBoard.curValue <= 0)
+        if (HP.curValue <= 0)
         {
             Die();
         }
     }
 
-    public void HealMainBoard(float amount)
+    public void HealHP(float amount)
     {
-        mainBoard.Add(amount);
+        HP.Add(amount);
     }
 
-    public void HealMemory(float amount)
+    public void HealHunger(float amount)
     {
-        memory.Add(amount);
+        Hunger.Add(amount);
     }
 
 
@@ -42,8 +42,5 @@ public class PlayerCondition : MonoBehaviour
         Debug.Log("Die");
         Time.timeScale = 0;
     }
-
-
-
 
 }
