@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Character/CharacterManager.cs.meta
+guid: 365b620fd3953194f9d9471d7b7c5fcd
+========
+guid: 85446862a376b4144bce973b6f44c2e9
+>>>>>>>> dev:Assets/Scripts/Enemy/Enemy.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
