@@ -2,8 +2,7 @@
 
 public class Storage : MonoBehaviour, IInteractable
 {
-    // 인벤토리 필드 추가
-    //public Inventory inventory; 
+    public Inventory StorageInventory; 
 
     public void Interact()
     {

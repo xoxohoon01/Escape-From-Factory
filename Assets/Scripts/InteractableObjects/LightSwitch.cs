@@ -12,6 +12,7 @@ public class LightSwitch : MonoBehaviour, IInteractable
             targetLight = GetComponentInChildren<Light>();
         }
     }
+
     void Start()
     {
         if(targetLight != null)
