@@ -3,9 +3,11 @@ using UnityEngine.UI;
 
 public class UICondition : MonoBehaviour
 {
-    public Condition HP; // MainBoard
-    public Condition Hunger; // Memory
-    public Condition Stamina; // Clock
+
+    private PlayerCondition condition;
+    private Condition HP { get { return condition.HP; } } //health
+    private Condition Hunger { get { return condition.Hunger; } } // hunger
+    private Condition Stamina { get { return condition.Stamina; } } //stamina
 
     [SerializeField] private Image HPBar;
     [SerializeField] private Image HungerBar;
@@ -13,13 +15,26 @@ public class UICondition : MonoBehaviour
 
     private void Start()
     {
-        CharacterManager.Instance.Player.condition.uiCondition = this;
+        condition = CharacterManager.Instance.Player.condition;
+        condition.uiCondition = this;
+
+        condition.onHPChanged += UpdateHPBar;
+        condition.onHungerChanged += UpdateHungerBar;
+        condition.onStaminaChanged += UpdateStaminaBar;
     }
 
-    private void Update()
+    private void UpdateHPBar()
     {
         HPBar.fillAmount = HP.GetPercentage();
+    }
+
+    private void UpdateHungerBar()
+    {
         HungerBar.fillAmount = Hunger.GetPercentage();
+    }
+
+    private void UpdateStaminaBar()
+    {
         StaminaBar.fillAmount = Stamina.GetPercentage();
     }
 }

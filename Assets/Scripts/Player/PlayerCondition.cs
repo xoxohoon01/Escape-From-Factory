@@ -1,25 +1,38 @@
+using System;
 using UnityEngine;
 
-public class PlayerCondition : MonoBehaviour
+public class PlayerCondition : Unit
 {
     public UICondition uiCondition;
 
-    private Condition HP { get { return uiCondition.HP; } } // MainBoard
-    private Condition Hunger { get { return uiCondition.Hunger; } } // Memory
-    private Condition Stamina { get { return uiCondition.Stamina; } } // Clock
+    public Condition HP; // Mainboard
+    public Condition Hunger; //Memory
+    public Condition Stamina; //Clock
+
+    public event Action onHPChanged;
+    public event Action onHungerChanged;
+    public event Action onStaminaChanged;
 
     [SerializeField] private float noHungerHPDecay;
 
     private void Update()
     {
         Hunger.Subtract(Hunger.passiveValue * Time.deltaTime);
+        onHungerChanged?.Invoke();
         Stamina.Add(Stamina.passiveValue * Time.deltaTime);
+        onStaminaChanged?.Invoke();
 
         if (Hunger.curValue <= 0)
         {
             HP.Subtract(noHungerHPDecay * Time.deltaTime);
+            onStaminaChanged?.Invoke();
         }
+    }
 
+    public override void Ondamage(float damage)
+    {
+        HP.Subtract(damage);
+        onHPChanged?.Invoke();
         if (HP.curValue <= 0)
         {
             Die();
@@ -29,11 +42,13 @@ public class PlayerCondition : MonoBehaviour
     public void HealHP(float amount)
     {
         HP.Add(amount);
+        onHPChanged?.Invoke();
     }
 
     public void HealHunger(float amount)
     {
         Hunger.Add(amount);
+        onHungerChanged?.Invoke();
     }
 
 
@@ -42,5 +57,8 @@ public class PlayerCondition : MonoBehaviour
         Debug.Log("Die");
         Time.timeScale = 0;
     }
+
+
+
 
 }

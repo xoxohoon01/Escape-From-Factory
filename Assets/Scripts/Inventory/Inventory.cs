@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class Inventory : MonoBehaviour
@@ -61,4 +62,18 @@ public class Inventory : MonoBehaviour
             AddItem(new ItemData(1));
         }
     }
+
+    //public void OnInventory(InputAction.CallbackContext context)
+    //{
+    //    if (context.phase == InputActionPhase.Started)
+    //    {
+    //        OnToggle();
+    //        onOpenInventory?.Invoke();
+    //    }
+    //}
+
+    //private void OnToggle()
+    //{
+    //    Cursor.lockState = isInvenOpen ? CursorLockMode.None : CursorLockMode.Locked;
+    //}
 }
