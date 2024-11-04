@@ -7,20 +7,18 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     [Header("Move")]
-    [SerializeField][Range(1, 7)] private float moveSpeed;
+    [SerializeField][Range(1, 10)] private float moveSpeed;
+    [SerializeField][Range(5, 15)] private float sprintSpeed;
     private Vector2 moveInput;
-    [SerializeField][Range(5, 10)] private float maxSpeed;
-    [SerializeField] private float acceleration;
-    private float originalMoveSpeed;
+    public bool isSprint;
 
     [Header("Look")]
     [SerializeField] private Transform camContainer;
-    [SerializeField] private float lookSensitively;
-    [SerializeField] private float maxXLook;
-    [SerializeField] private float minXLook;
-    private Vector2 lookInput;
-    private float curCamXRot;
-    private bool isInvenOpen;
+    [SerializeField] private float lookSensitively = 0.02f;
+    [SerializeField] private float minYLook = -85;
+    [SerializeField] private float maxYLook = 80;
+    private float curCamXRotation;
+    private float curCamYRotation;
 
     [Header("Jump")]
     [SerializeField] private float jumpPower;
@@ -38,7 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
-        originalMoveSpeed = moveSpeed;
     }
 
     private void FixedUpdate()
@@ -48,36 +45,37 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (isInvenOpen = Cursor.lockState == CursorLockMode.Locked)
+        Look();
+    }
+
+    #region 이동
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            isSprint = true;
+        else if (context.phase == InputActionPhase.Canceled)
+            isSprint = false;
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
         {
-            Look();
+            moveInput = context.ReadValue<Vector2>();
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            moveInput = Vector2.zero;
         }
     }
 
     private void Move()
     {
-        Vector3 dir = (transform.forward * moveInput.y + transform.right * moveInput.x).normalized;
-        if (moveInput != Vector2.zero)
-        {
-            moveSpeed = Mathf.Min(moveSpeed + acceleration * Time.fixedDeltaTime, maxSpeed);
-        }
-        else
-        {
-            moveSpeed = originalMoveSpeed;
-        }
-
-        dir *= moveSpeed;
-        dir.y = rb.velocity.y;
-        rb.velocity = dir;
+        Vector3 _dir = (transform.forward * moveInput.y + transform.right * moveInput.x).normalized * (isSprint ? sprintSpeed : moveSpeed) * Time.deltaTime;
+        rb.MovePosition(rb.position + _dir);
     }
 
-    private void Look()
-    {
-        curCamXRot += lookInput.y * lookSensitively;
-        curCamXRot = Mathf.Clamp(curCamXRot, minXLook, maxXLook);
-        camContainer.localEulerAngles = new Vector3(-curCamXRot, 0, 0);
-        transform.eulerAngles += new Vector3(0, lookInput.x * lookSensitively, 0);
-    }
 
     private bool isGrounded()
     {
@@ -99,24 +97,6 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
-        {
-            moveInput = context.ReadValue<Vector2>();
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            moveInput = Vector2.zero;
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        }
-    }
-
-    public void OnLook(InputAction.CallbackContext context)
-    {
-        lookInput = context.ReadValue<Vector2>();
-    }
-
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && isGrounded())
@@ -124,6 +104,24 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
+
+    #endregion
+
+    #region 카메라 회전
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        Vector2 _lookVector = context.ReadValue<Vector2>();
+        curCamXRotation += _lookVector.x * lookSensitively;
+        curCamYRotation = Mathf.Clamp(curCamYRotation + (_lookVector.y * lookSensitively), minYLook, maxYLook);
+    }
+
+    private void Look()
+    {
+        camContainer.localEulerAngles = new Vector3(-curCamYRotation, 0, 0);
+        transform.eulerAngles = new Vector3(0, curCamXRotation, 0);
+    }
+
+    #endregion
 
     public void OnInteract(InputAction.CallbackContext context)
     {
@@ -137,13 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            OnToggle();
             onOpenInventory?.Invoke();
         }
-    }
-
-    private void OnToggle()
-    {
-        Cursor.lockState = isInvenOpen ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }
