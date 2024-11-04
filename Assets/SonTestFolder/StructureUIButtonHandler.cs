@@ -9,11 +9,11 @@ using UnityEngine.UI;
 
 public class StructureUIButtonHandler : MonoBehaviour
 {
-    public BuildingManager buildingManager;
+    public BuildingManager_Son buildingManager;
 
     private void Awake()
     {
-        buildingManager = GetComponentInParent<BuildingManager>();
+        buildingManager = GetComponentInParent<BuildingManager_Son>();
     }
 
     private void Start()
@@ -24,9 +24,7 @@ public class StructureUIButtonHandler : MonoBehaviour
     private void MakeStructureUIButton()
     {
         MakeEmptyObject();
-
-        MakeStrucutrButton();
-
+        MakeStructureButton();
     }
 
     private void MakeEmptyObject()
@@ -37,7 +35,7 @@ public class StructureUIButtonHandler : MonoBehaviour
         empty.transform.SetParent(gameObject.transform, false);
     }
 
-    private void MakeStrucutrButton()
+    private void MakeStructureButton()
     {
         for (int _index = 0; _index < buildingManager.objects.Length; _index++)
         {

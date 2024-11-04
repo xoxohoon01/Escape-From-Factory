@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingManager : MonoBehaviour
+public class BuildingManager_Son : MonoBehaviour
 {
     public InteractableObjectSO[] objects;
     private GameObject pendingObject;

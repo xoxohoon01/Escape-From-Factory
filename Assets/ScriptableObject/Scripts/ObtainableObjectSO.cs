@@ -12,8 +12,8 @@ public enum ItemType
 public class ObtainableObjectSO : ScriptableObject
 {
     [Header("Info")]
-    public string objectName;
-    public string objectDescription;
+    public string Name;
+    public string Description;
     public ItemType itemType;
     public Sprite icon;
     public GameObject prefab;

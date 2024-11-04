@@ -6,8 +6,8 @@ using UnityEngine;
 public class InteractableObjectSO : ScriptableObject
 {
     [Header("Info")]
-    public string objectName;
-    public string objectDescription;
+    public string Name;
+    public string Description;
     public bool isCunstructible;
     public Sprite icon;
     public GameObject prefab;
