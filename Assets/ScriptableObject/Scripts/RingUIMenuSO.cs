@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public enum MenuType
-    {
-        Build,
-        Move,
-        Remove
-    }
+public enum MenuType
+{
+    Build,
+    Move,
+    Remove
+}
+
 
 [CreateAssetMenu(fileName = "RingUIMenuSO", menuName = "ScriptableObject/RingUIMenuSO", order = 3)]
 public class RingUIMenuSO : ScriptableObject
