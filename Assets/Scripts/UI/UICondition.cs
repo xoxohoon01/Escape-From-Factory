@@ -5,36 +5,36 @@ public class UICondition : MonoBehaviour
 {
 
     private PlayerCondition condition;
-    private Condition mainBoard { get { return condition.mainBoard; } } //health
-    private Condition memory { get { return condition.memory; } } // hunger
-    private Condition clock { get { return condition.clock; } } //stamina
+    private Condition HP { get { return condition.HP; } } //health
+    private Condition Hunger { get { return condition.Hunger; } } // hunger
+    private Condition Stamina { get { return condition.Stamina; } } //stamina
 
-    [SerializeField] private Image mainBoardBar;
-    [SerializeField] private Image memoryBar;
-    [SerializeField] private Image clockBar;
+    [SerializeField] private Image HPBar;
+    [SerializeField] private Image HungerBar;
+    [SerializeField] private Image StaminaBar;
 
     private void Start()
     {
         condition = CharacterManager.Instance.Player.condition;
         condition.uiCondition = this;
 
-        condition.onMainBoardChanged += UpdateMainBoardBar;
-        condition.onMemoryChanged += UpdateMemoryBar;
-        condition.onClockChanged += UpdateClockBar;
+        condition.onHPChanged += UpdateHPBar;
+        condition.onHungerChanged += UpdateHungerBar;
+        condition.onStaminaChanged += UpdateStaminaBar;
     }
 
-    private void UpdateMainBoardBar()
+    private void UpdateHPBar()
     {
-        mainBoardBar.fillAmount = mainBoard.GetPercentage();
+        HPBar.fillAmount = HP.GetPercentage();
     }
 
-    private void UpdateMemoryBar()
+    private void UpdateHungerBar()
     {
-        memoryBar.fillAmount = memory.GetPercentage();
+        HungerBar.fillAmount = Hunger.GetPercentage();
     }
 
-    private void UpdateClockBar()
+    private void UpdateStaminaBar()
     {
-        clockBar.fillAmount = clock.GetPercentage();
+        StaminaBar.fillAmount = Stamina.GetPercentage();
     }
 }
