@@ -5,50 +5,50 @@ public class PlayerCondition : Unit
 {
     public UICondition uiCondition;
 
-    public Condition mainBoard;
-    public Condition memory;
-    public Condition clock;
+    public Condition HP; // Mainboard
+    public Condition Hunger; //Memory
+    public Condition Stamina; //Clock
 
-    public event Action onMainBoardChanged;
-    public event Action onMemoryChanged;
-    public event Action onClockChanged;
+    public event Action onHPChanged;
+    public event Action onHungerChanged;
+    public event Action onStaminaChanged;
 
-    [SerializeField] private float noMemoryMainBoardDecay;
+    [SerializeField] private float noHungerHPDecay;
 
     private void Update()
     {
-        memory.Subtract(memory.passiveValue * Time.deltaTime);
-        onMemoryChanged?.Invoke();
-        clock.Add(clock.passiveValue * Time.deltaTime);
-        onClockChanged?.Invoke();
+        Hunger.Subtract(Hunger.passiveValue * Time.deltaTime);
+        onHungerChanged?.Invoke();
+        Stamina.Add(Stamina.passiveValue * Time.deltaTime);
+        onStaminaChanged?.Invoke();
 
-        if (memory.curValue <= 0)
+        if (Hunger.curValue <= 0)
         {
-            mainBoard.Subtract(noMemoryMainBoardDecay * Time.deltaTime);
-            onClockChanged?.Invoke();
+            HP.Subtract(noHungerHPDecay * Time.deltaTime);
+            onStaminaChanged?.Invoke();
         }
     }
 
     public override void Ondamage(float damage)
     {
-        mainBoard.Subtract(damage);
-        onMainBoardChanged?.Invoke();
-        if (mainBoard.curValue <= 0)
+        HP.Subtract(damage);
+        onHPChanged?.Invoke();
+        if (HP.curValue <= 0)
         {
             Die();
         }
     }
 
-    public void HealMainBoard(float amount)
+    public void HealHP(float amount)
     {
-        mainBoard.Add(amount);
-        onMainBoardChanged?.Invoke();
+        HP.Add(amount);
+        onHPChanged?.Invoke();
     }
 
-    public void HealMemory(float amount)
+    public void HealHunger(float amount)
     {
-        memory.Add(amount);
-        onMemoryChanged?.Invoke();
+        Hunger.Add(amount);
+        onHungerChanged?.Invoke();
     }
 
 

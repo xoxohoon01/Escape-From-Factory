@@ -357,6 +357,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a62d439d-d4e4-4244-b8c2-dd15e5437cea
     m_ActionName: Player/Inventory[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3154490046535162398}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dbd43858-0755-4f11-aa49-eae45ccb3837
+    m_ActionName: Player/Sprint[/Keyboard/leftShift,/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -374,8 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e45f1a21a1d55746b054b27aa7fceb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  condition: {fileID: 0}
+  controller: {fileID: 3154490046535162398}
+  condition: {fileID: 889057579131714751}
 --- !u!114 &3154490046535162398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,10 +405,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  sprintSpeed: 7
+  isSprint: 0
   camContainer: {fileID: 8114192633251093469}
-  lookSensitively: 0.2
-  maxXLook: 65
-  minXLook: -65
+  lookSensitively: 0.02
+  minYLook: -85
+  maxYLook: 80
   jumpPower: 5
   groundLayer:
     serializedVersion: 2
@@ -411,7 +429,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
-  noMemoryMainBoardDecay: 1
+  HP:
+    curValue: 0
+    passiveValue: 0
+    maxValue: 0
+    startValue: 0
+  Hunger:
+    curValue: 0
+    passiveValue: 0
+    maxValue: 0
+    startValue: 0
+  Stamina:
+    curValue: 0
+    passiveValue: 0
+    maxValue: 0
+    startValue: 0
+  noHungerHPDecay: 0
 --- !u!1 &8729857081470640339
 GameObject:
   m_ObjectHideFlags: 0
