@@ -1,18 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI promptText;
+    private Camera camera;
+    
+    private PlayerController controller;
+
+
+    private void Awake()
     {
-        
+        controller = GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        controller.onInteraction += OnInteract;
     }
+
+    private void OnDisable()
+    {
+        controller.onInteraction -= OnInteract;
+    }
+
+    private void Update()
+    {
+        //RayCheck();
+    }
+
+    private void OnInteract()
+    {
+
+    }
+
+
+    private void RayCheck()
+    {
+        throw new NotImplementedException();
+    }
+
 }

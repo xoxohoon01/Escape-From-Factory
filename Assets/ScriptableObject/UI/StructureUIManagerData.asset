@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7684814bcd8dc4a89459c552ed02eb, type: 3}
+  m_Name: StructureUIManagerData
+  m_EditorClassIdentifier: 
+  selectableMenus:
+  - {fileID: 11400000, guid: 92c336f90d9d6694f80ae883e6f6f63f, type: 2}
+  - {fileID: 11400000, guid: 618a3b33dd2fadc49a5f3f6b64989146, type: 2}
+  - {fileID: 11400000, guid: 50a62a04027f01848a1db055578f4eec, type: 2}
+  menuSprite: {fileID: 21300000, guid: 5da74bf4108eb9d40a6fe9d96289408e, type: 3}
