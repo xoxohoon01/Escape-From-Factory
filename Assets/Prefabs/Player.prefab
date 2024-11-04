@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  sprintSpeed: 7
+  isSprint: 0
   camContainer: {fileID: 1241954765707224190}
   lookSensitively: 0.2
   minYLook: 0
@@ -224,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
-  noMemoryMainBoardDecay: 1
+  noHungerHPDecay: 0
 --- !u!1 &7658093230184447728
 GameObject:
   m_ObjectHideFlags: 0
