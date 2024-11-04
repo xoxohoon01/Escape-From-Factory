@@ -29,7 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        RayCheck();
+        //RayCheck();
     }
 
     private void OnInteract()
