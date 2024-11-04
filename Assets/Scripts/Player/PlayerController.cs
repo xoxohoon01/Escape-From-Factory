@@ -46,7 +46,10 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Look();
+        if (isInvenOpen = Cursor.lockState == CursorLockMode.Locked)
+        {
+            Look();
+        }
     }
 
     #region ¿Ãµø
@@ -124,17 +127,17 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    //public void OnInventory(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Started)
-    //    {
-    //        OnToggle();
-    //        onOpenInventory?.Invoke();
-    //    }
-    //}
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            OnToggle();
+            onOpenInventory?.Invoke();
+        }
+    }
 
-    //private void OnToggle()
-    //{
-    //    Cursor.lockState = isInvenOpen ? CursorLockMode.None : CursorLockMode.Locked;
-    //}
+    private void OnToggle()
+    {
+        Cursor.lockState = isInvenOpen ? CursorLockMode.None : CursorLockMode.Locked;
+    }
 }
