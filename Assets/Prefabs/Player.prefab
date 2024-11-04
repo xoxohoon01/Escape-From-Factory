@@ -358,7 +358,19 @@ MonoBehaviour:
     m_ActionId: a62d439d-d4e4-4244-b8c2-dd15e5437cea
     m_ActionName: Player/Inventory[/Keyboard/tab]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3154490046535162398}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: dbd43858-0755-4f11-aa49-eae45ccb3837
     m_ActionName: Player/Sprint[/Keyboard/leftShift,/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
@@ -417,22 +429,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
-  mainBoard:
+  HP:
     curValue: 0
     passiveValue: 0
     maxValue: 0
     startValue: 0
-  memory:
+  Hunger:
     curValue: 0
     passiveValue: 0
     maxValue: 0
     startValue: 0
-  clock:
+  Stamina:
     curValue: 0
     passiveValue: 0
     maxValue: 0
     startValue: 0
-  noMemoryMainBoardDecay: 1
+  noHungerHPDecay: 0
 --- !u!1 &8729857081470640339
 GameObject:
   m_ObjectHideFlags: 0

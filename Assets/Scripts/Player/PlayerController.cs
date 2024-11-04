@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
             isSprint = true;
-        else
+        else if (context.phase == InputActionPhase.Canceled)
             isSprint = false;
     }
 
