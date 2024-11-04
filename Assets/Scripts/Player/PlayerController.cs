@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxYLook = 80;
     private float curCamXRotation;
     private float curCamYRotation;
+    private bool isInvenOpen;
 
     [Header("Jump")]
     [SerializeField] private float jumpPower;
@@ -123,19 +124,17 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            onInteraction?.Invoke();
-        }
-    }
+    //public void OnInventory(InputAction.CallbackContext context)
+    //{
+    //    if (context.phase == InputActionPhase.Started)
+    //    {
+    //        OnToggle();
+    //        onOpenInventory?.Invoke();
+    //    }
+    //}
 
-    public void OnInventory(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            onOpenInventory?.Invoke();
-        }
-    }
+    //private void OnToggle()
+    //{
+    //    Cursor.lockState = isInvenOpen ? CursorLockMode.None : CursorLockMode.Locked;
+    //}
 }

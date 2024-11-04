@@ -8,7 +8,6 @@ public class BuildingManager_Son : MonoBehaviour
     public InteractableObjectSO[] objects;
     private GameObject pendingObject;
     private Vector3 position;
-
     private RaycastHit hit;
 
     [SerializeField] private LayerMask layerMask;
