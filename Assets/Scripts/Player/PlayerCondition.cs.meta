@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/Character/CharacterManager.cs.meta
-guid: 365b620fd3953194f9d9471d7b7c5fcd
-========
-guid: 85446862a376b4144bce973b6f44c2e9
->>>>>>>> dev:Assets/Scripts/Enemy/Enemy.cs.meta
+guid: cf69c46556663a6409c74a97301be427
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

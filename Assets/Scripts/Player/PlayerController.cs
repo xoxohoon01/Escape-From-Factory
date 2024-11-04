@@ -7,8 +7,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     [Header("Move")]
-    [SerializeField][Range(1, 10)] private float moveSpeed;
+    [SerializeField][Range(1, 7)] private float moveSpeed;
     private Vector2 moveInput;
+    [SerializeField][Range(5, 10)] private float maxSpeed;
+    [SerializeField] private float acceleration;
+    private float originalMoveSpeed;
 
     [Header("Look")]
     [SerializeField] private Transform camContainer;
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float minXLook;
     private Vector2 lookInput;
     private float curCamXRot;
+    private bool isInvenOpen;
 
     [Header("Jump")]
     [SerializeField] private float jumpPower;
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        originalMoveSpeed = moveSpeed;
     }
 
     private void FixedUpdate()
@@ -43,12 +48,24 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Look();
+        if (isInvenOpen = Cursor.lockState == CursorLockMode.Locked)
+        {
+            Look();
+        }
     }
 
     private void Move()
     {
         Vector3 dir = (transform.forward * moveInput.y + transform.right * moveInput.x).normalized;
+        if (moveInput != Vector2.zero)
+        {
+            moveSpeed = Mathf.Min(moveSpeed + acceleration * Time.fixedDeltaTime, maxSpeed);
+        }
+        else
+        {
+            moveSpeed = originalMoveSpeed;
+        }
+
         dir *= moveSpeed;
         dir.y = rb.velocity.y;
         rb.velocity = dir;
@@ -71,8 +88,8 @@ public class PlayerController : MonoBehaviour
             new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
             new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down)
         };
-        
-        for(int i = 0; i < rays.Length; i++)
+
+        for (int i = 0; i < rays.Length; i++)
         {
             if (Physics.Raycast(rays[i], maxRayDistance, groundLayer))
             {
@@ -102,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && isGrounded())
+        if (context.phase == InputActionPhase.Started && isGrounded())
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
@@ -110,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started)
         {
             onInteraction?.Invoke();
         }
@@ -118,9 +135,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnInventory(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started)
         {
+            OnToggle();
             onOpenInventory?.Invoke();
         }
+    }
+
+    private void OnToggle()
+    {
+        Cursor.lockState = isInvenOpen ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

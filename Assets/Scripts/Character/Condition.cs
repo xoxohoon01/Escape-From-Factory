@@ -3,7 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class Condition
 {
-    [SerializeField] private float curValue;
+    public float curValue;
+    public float passiveValue;
     [SerializeField] private float maxValue;
     [SerializeField] private float startValue;
 
