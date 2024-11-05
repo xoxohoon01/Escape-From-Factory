@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     private Rigidbody rb;
     private EnemyCondition condition;
+    private Animator animator;
 
     private Vector3 moveVector;
 
@@ -31,6 +32,8 @@ public class EnemyController : MonoBehaviour
                 moveVector = transform.forward * _moveSpeed;
                 isMove = true;
                 moveSpan = UnityEngine.Random.Range(2.0f, 4.0f);
+
+                animator.SetFloat("speed", 1);
             }
         }
         else
@@ -39,6 +42,8 @@ public class EnemyController : MonoBehaviour
             {
                 isMove = false;
                 moveDelay = UnityEngine.Random.Range(2.0f, 5.0f);
+
+                animator.SetFloat("speed", 0);
             }
                 
         }
@@ -56,6 +61,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()

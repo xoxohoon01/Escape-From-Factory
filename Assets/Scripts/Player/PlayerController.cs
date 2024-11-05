@@ -46,10 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (isInvenOpen = Cursor.lockState == CursorLockMode.Locked)
-        {
-            Look();
-        }
+        Look();
     }
 
     #region 이동
@@ -114,10 +111,14 @@ public class PlayerController : MonoBehaviour
     #region 카메라 회전
     public void OnLook(InputAction.CallbackContext context)
     {
-        Vector2 _lookVector = context.ReadValue<Vector2>();
-        curCamXRotation += _lookVector.x * lookSensitively;
-        curCamYRotation = Mathf.Clamp(curCamYRotation + (_lookVector.y * lookSensitively), minYLook, maxYLook);
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Vector2 _lookVector = context.ReadValue<Vector2>();
+            curCamXRotation += _lookVector.x * lookSensitively;
+            curCamYRotation = Mathf.Clamp(curCamYRotation + (_lookVector.y * lookSensitively), minYLook, maxYLook);
+        }
     }
+        
 
     private void Look()
     {

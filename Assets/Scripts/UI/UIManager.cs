@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    // 현재 선택된 인벤토리와 툴바, 바뀔 경우 UI의 내용이 바뀜
+    private Inventory currentInventory;
+    private Toolbar currentToolbar;
+
     [Header("Object")]
     // 인벤토리 UI (캔버스 하위 오브젝트)
-    public GameObject Inventory;
-
-    [Header("Prefab")]
-    // 인벤토리 슬롯 프리팹
-    public GameObject InventorySlotPrefab;
+    public SlotMenu InventoryUI;
+    public SlotMenu ToolbarUI;
 
     private static UIManager instance;
     public static UIManager Instance
     {
-        get 
+        get
         {
             if (instance != null)
                 return instance;
@@ -29,12 +32,49 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateInventory(List<ItemData> inventory)
+
+    // 인벤토리 UI 변경 (플레이어 인벤토리인지, 상자 인벤토리인지 등의 정보에 따라 다른 인벤토리 열리도록)
+    public void OpenInventory(Inventory inventory)
     {
-        for (int i = 0; i < Inventory.transform.childCount; i++)
+        InventoryUI.gameObject.SetActive(true);
+        currentInventory = inventory;
+        UpdateInventory();
+    }
+
+    // 툴바 데이터 업데이트
+    public void OpenToolbar(Toolbar toolbar)
+    {
+        ToolbarUI.gameObject.SetActive(true);
+        currentToolbar = toolbar;
+        UpdateInventory();
+    }
+
+    // 인벤토리 UI 업데이트 (이미지 최신화)
+    public void UpdateInventory()
+    {
+        // 현재 선택된 인벤토리가 있을 때만 업데이트
+        if (currentInventory != null)
         {
-            if (inventory[i].ID != 0)
-                Inventory.transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text = inventory[i].ID.ToString();
+            // 인벤토리 아이템 이미지 변경
+            for (int i = 0; i < InventoryUI.Slots.Count; i++)
+            {
+                if (currentInventory.Items[i] != null)
+                {
+                    InventoryUI.Slots[i].image.sprite = currentInventory.Items[i].icon;
+                }
+            }
+        }
+
+        if (currentToolbar != null)
+        {
+            // 툴바 이미지 변경
+            for (int i = 0; i < ToolbarUI.Slots.Count; i++)
+            {
+                if (currentToolbar.Items[i] != null)
+                {
+                    ToolbarUI.Slots[i].image.sprite = currentToolbar.Items[i].icon;
+                }
+            }
         }
     }
 
@@ -46,11 +86,4 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Start()
-    {
-        for (int i = 0; i < 30; i++)
-        {
-            Instantiate(InventorySlotPrefab, Inventory.transform);
-        }
-    }
 }
