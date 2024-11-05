@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SupplyBox : Object
 {
+    public List<GameObject> Supplys;
     
 
 
