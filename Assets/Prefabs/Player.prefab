@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6483233927485593913}
   - component: {fileID: 2834727212144857295}
   - component: {fileID: 8284406793034050722}
+  - component: {fileID: 4382494982187929405}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -167,9 +168,37 @@ MonoBehaviour:
     m_ActionId: 49deb059-38e4-41af-a134-ac39c4259555
     m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: OnInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a62d439d-d4e4-4244-b8c2-dd15e5437cea
     m_ActionName: Player/Inventory[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2834727212144857295}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dbd43858-0755-4f11-aa49-eae45ccb3837
+    m_ActionName: Player/Sprint[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -205,9 +234,9 @@ MonoBehaviour:
   sprintSpeed: 7
   isSprint: 0
   camContainer: {fileID: 1241954765707224190}
-  lookSensitively: 0.2
-  minYLook: 0
-  maxYLook: 0
+  lookSensitively: 0.02
+  minYLook: -45
+  maxYLook: 80
   jumpPower: 5
   groundLayer:
     serializedVersion: 2
@@ -226,7 +255,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
+  HP:
+    curValue: 0
+    passiveValue: 0
+    maxValue: 0
+    startValue: 0
+  Hunger:
+    curValue: 0
+    passiveValue: 0
+    maxValue: 0
+    startValue: 0
+  Stamina:
+    curValue: 0
+    passiveValue: 0
+    maxValue: 0
+    startValue: 0
   noHungerHPDecay: 0
+--- !u!114 &4382494982187929405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880777417373658690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ced8ddebe3a14549a0374c722bda67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7658093230184447728
 GameObject:
   m_ObjectHideFlags: 0
