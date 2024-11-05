@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public class Storage : MonoBehaviour, IInteractable
+public class Storage : Object, IInteractable
 {
-    // 인벤토리 필드 추가
-    //public Inventory inventory; 
+    public Inventory StorageInventory; 
 
     public void Interact()
     {

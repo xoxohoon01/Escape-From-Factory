@@ -9,6 +9,7 @@ public class InteractableObjectSO : ScriptableObject
     public string Name;
     public string Description;
     public bool isCunstructible;
+    public float durability;
     public Sprite icon;
     public GameObject prefab;
 }
