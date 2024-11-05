@@ -16,7 +16,6 @@ public class StructureUIManager : MonoBehaviour
         MakeMenuIcon();
     }
 
-
     private void MakeMenuBackground()
     {
         GameObject _ringMenuContainer = new GameObject("MenuBackGround");
@@ -38,7 +37,6 @@ public class StructureUIManager : MonoBehaviour
             _ringMenuImage.fillMethod = Image.FillMethod.Radial360;
             _ringMenuImage.fillOrigin = 2;
             _ringMenuImage.fillAmount = ((360f / menuData.selectableMenus.Count) - 1f) / 360f;
-
         }
     }
 
@@ -55,7 +53,6 @@ public class StructureUIManager : MonoBehaviour
 
             RectTransform _menuIconRect = _menuIconObject.AddComponent<RectTransform>();
             _menuIconRect.localPosition = new Vector3(_x, _y, 0f);
-            // _menuIconRect.localEulerAngles = new Vector3(0, 0, (360f / menuData.selectableMenus.Count) * _i);
 
             Image _menuIconImage = _menuIconObject.AddComponent<Image>();
             _menuIconImage.sprite = menuData.selectableMenus[_i].icon;
@@ -88,7 +85,6 @@ public class StructureUIManager : MonoBehaviour
 
     private void OnBuildStructure()
     {
-        Debug.Log("건물짓기");
         SonUIManager.Instance.StructureUIManager.SetActive(false);
         SonUIManager.Instance.BuildingUI.SetActive(true);
         //UIManager.Instance.StructureUIManager.SetActive(false);
@@ -97,11 +93,15 @@ public class StructureUIManager : MonoBehaviour
 
     private void OnMoveStructure()
     {
-        Debug.Log("건물이동");
+        SonUIManager.Instance.StructureUIManager.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        menuData.RaiseMoveEvent();
     }
 
     private void OnRemoveStructure()
     {
-        Debug.Log("건물부수기");
+        SonUIManager.Instance.StructureUIManager.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        menuData.RaiseDestroyEvent();
     }
 }

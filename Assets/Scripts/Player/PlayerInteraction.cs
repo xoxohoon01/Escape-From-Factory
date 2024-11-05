@@ -70,5 +70,4 @@ public class PlayerInteraction : MonoBehaviour
         promptText.text ="SomeObject";
         //promptText.text = curInteractable.GetInteractPrompt();
     }
-
 }
