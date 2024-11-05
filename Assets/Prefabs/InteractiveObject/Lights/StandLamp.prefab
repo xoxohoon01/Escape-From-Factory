@@ -43,14 +43,14 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
-  m_Range: 10
+  m_Color: {r: 0.9299191, g: 0.9042929, b: 0.7908072, a: 1}
+  m_Intensity: 4
+  m_Range: 8
   m_SpotAngle: 60
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8358953617143435354}
   - component: {fileID: 3347640481713897570}
-  - component: {fileID: 7490975077910038848}
+  - component: {fileID: 481422086537670077}
   m_Layer: 0
   m_Name: StandLamp
   m_TagString: Untagged
@@ -150,7 +150,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25913885, y: 0.4335958, z: 0.26190856}
   m_Center: {x: 0.0062315017, y: 0.21142031, z: -0.007616237}
---- !u!114 &7490975077910038848
+--- !u!114 &481422086537670077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24de4b12c18c95844aece0e2b85c4dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectSO: {fileID: 11400000, guid: d9484255ac4e1b744a0d9153b2cd953b, type: 2}
   targetLight: {fileID: 0}
 --- !u!1 &8933308748472678068
 GameObject:

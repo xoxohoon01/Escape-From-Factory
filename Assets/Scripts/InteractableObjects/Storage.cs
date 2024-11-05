@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Storage : MonoBehaviour, IInteractable
+public class Storage : Object, IInteractable
 {
     public Inventory StorageInventory; 
 

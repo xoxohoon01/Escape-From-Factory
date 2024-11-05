@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LightSwitch : MonoBehaviour, IInteractable
+public class LightSwitch : Object, IInteractable
 {
     public Light targetLight;
     private bool isOn;
