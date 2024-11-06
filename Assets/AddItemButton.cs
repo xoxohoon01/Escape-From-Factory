@@ -14,7 +14,7 @@ public class AddItemButton : MonoBehaviour
 
     public void AddToolbar()
     {
-        player.inventory.toolbar.AddItem(player.inventory.inventory.Items[0]);
+        player.inventory.toolbar.AddItem(player.inventory.inventory.Slots[0]);
     }
 
 }

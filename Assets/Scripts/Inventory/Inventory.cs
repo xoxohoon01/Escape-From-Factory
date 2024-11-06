@@ -5,15 +5,27 @@ using UnityEngine.InputSystem;
 
 public class Inventory
 {
-    public List<InteractableObjectSO> Items = new List<InteractableObjectSO>(new InteractableObjectSO[30]);
+    public List<ItemData> Slots = new List<ItemData>(new ItemData[30]);
 
     public void AddItem(InteractableObjectSO item)
     {
         for (int i = 0; i < 30; i++)
         {
-            if (Items[i] == null)
+            if (Slots[i] != null && Slots[i].Item.Name == item.name)
             {
-                Items[i] = item;
+                if (Slots[i].Stack < 99)
+                {
+                    Slots[i].Stack += 1;
+                    return;
+                }
+            }
+            
+        }
+        for (int i = 0; i < 30; i++)
+        {
+            if (Slots[i] == null)
+            {
+                Slots[i] = new ItemData(item);
                 UIManager.Instance.UpdateInventory();
                 return;
             }
