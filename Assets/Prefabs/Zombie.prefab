@@ -2447,7 +2447,6 @@ GameObject:
   - component: {fileID: 3985049757237479078}
   - component: {fileID: 3185929765321708075}
   - component: {fileID: 5361504057631220086}
-  - component: {fileID: -4276950285251384920}
   - component: {fileID: 6267008870790637237}
   - component: {fileID: 9000779348664966348}
   m_Layer: 0
@@ -2570,18 +2569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28a64a4c019c3242bed73e2814ba8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4276950285251384920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8706122049803390991}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba5dd465a3afbb4bb25d50f274e5f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6267008870790637237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2601,6 +2588,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   detectionRange: 6
   attackRange: 1
+  testCube: {fileID: 0}
 --- !u!195 &9000779348664966348
 NavMeshAgent:
   m_ObjectHideFlags: 0

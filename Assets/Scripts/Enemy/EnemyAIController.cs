@@ -13,9 +13,13 @@ public class EnemyAIController : MonoBehaviour
     public float attackRange = 1f;
 
     private IAIState currentState;
+
+
     private float boxSize = 5f;
     private bool isHit;
     RaycastHit hit;
+
+    public GameObject testCube;
 
     private void Start()
     {
@@ -30,6 +34,7 @@ public class EnemyAIController : MonoBehaviour
         currentState.UpdateState(this);
     }
 
+    // 상태 전환
     public void SwitchState(IAIState newState)
     {
         currentState.ExitState(this);
@@ -37,13 +42,25 @@ public class EnemyAIController : MonoBehaviour
         currentState.EnterState(this);
     }
 
+    // 상태 판단
     public bool CheckForPlayer()
     {
         Vector3 halfExtents = new Vector3(boxSize, boxSize, boxSize);
-        Ray ray = new Ray(transform.position, transform.forward);
+        Collider[] colliders = Physics.OverlapBox(transform.position + (transform.forward * detectionRange), halfExtents, Quaternion.identity, playerLayer);
+
+        if (colliders.Length > 0)
+        {
+            Target = colliders[0].transform;
+            return true;
+        }
+        return false;
+
+        /*
         isHit = Physics.BoxCast(ray.origin, halfExtents, ray.direction, out hit, Quaternion.identity, detectionRange, playerLayer);
         if (isHit)
         {
+
+            testCube.transform.position = hit.transform.position;
             //Target = hit.transform;
             Debug.Log("Player detected and set as target!");
             return true;
@@ -53,8 +70,10 @@ public class EnemyAIController : MonoBehaviour
             //Target = null;
         }
         return false;
+        */
     }
 
+    // 행동 (이동)
     public void SetRandomDestination()
     {
         Vector3 randomDirection = Random.insideUnitSphere * detectionRange;
@@ -64,6 +83,7 @@ public class EnemyAIController : MonoBehaviour
         agent.SetDestination(navHit.position);
     }
 
+    // 행동 (공격)
     public void PerformAttack()
     {
         // 공격 실행 로직
@@ -77,6 +97,10 @@ public class EnemyAIController : MonoBehaviour
         Vector3 halfExtents = new Vector3(boxSize, boxSize, boxSize);
         Vector3 boxCenter;
 
+        Gizmos.DrawRay(transform.position, transform.forward * detectionRange);
+        Gizmos.DrawWireCube(transform.position + (transform.forward * detectionRange), halfExtents * 2);
+
+        /*
         if (isHit)
         {
             // 충돌이 감지된 경우 충돌 지점까지의 레이와 박스 표시
@@ -91,5 +115,6 @@ public class EnemyAIController : MonoBehaviour
             boxCenter = transform.position + transform.forward * detectionRange;     // 최대 거리 위치에 박스 표시
             Gizmos.DrawWireCube(boxCenter, halfExtents * 2);                      // 박스 크기 (전체 크기로 설정)
         }
+        */
     }
 }

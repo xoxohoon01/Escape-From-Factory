@@ -18,6 +18,8 @@ public class GunScript : MonoBehaviour
             {
                 GameObject newBullet = Instantiate(bullet);
                 newBullet.transform.position = flashPoint.position;
+                newBullet.transform.eulerAngles = transform.forward;
+                newBullet.GetComponent<BulletScript>().Launch(10f);
                 fireDelay = 1 / fireRate;
             }
         }
@@ -27,5 +29,7 @@ public class GunScript : MonoBehaviour
     {
         if (fireDelay > 0)
             fireDelay -= Time.deltaTime;
+
+        Fire();
     }
 }
