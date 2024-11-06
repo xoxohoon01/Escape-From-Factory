@@ -43,19 +43,19 @@ public class Door : Object, IInteractable
         if (isOpen)
         {
             StartCoroutine(CoCloseDoor());
-            Debug.Log("문이 열립니다.");
+            //Debug.Log("문이 열립니다.");
         }
         else
         {
             StartCoroutine(CoOpenDoor());
-            Debug.Log("문이 닫힙니다.");
+            //Debug.Log("문이 닫힙니다.");
         }
 
     }
 
     public void Update()
     {
-        InvokeRepeating("Interact", 1, 2);
+        //InvokeRepeating("Interact", 1, 2);
     }
 
     public IEnumerator CoOpenDoor()

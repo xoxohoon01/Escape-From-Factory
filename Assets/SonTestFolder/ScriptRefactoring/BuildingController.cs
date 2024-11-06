@@ -7,6 +7,7 @@ public class BuildingController : MonoBehaviour
 {
     public StructureUIDataSO structureUIDataSO;
     public BuildUIDataSO objectData;
+
     private StructurePool pool;
     private GameObject pendingObject;
     private Transform parentObject;

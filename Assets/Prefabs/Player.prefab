@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 2834727212144857295}
   - component: {fileID: 8284406793034050722}
   - component: {fileID: 4382494982187929405}
+  - component: {fileID: 4646783349506555264}
+  - component: {fileID: 1140606305927170877}
+  - component: {fileID: 8684059659730169197}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -74,7 +77,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880777417373658690}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 07fb3adf24b23874cb1c63fc026e1eac, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -164,7 +167,19 @@ MonoBehaviour:
     m_ActionId: 924d6793-091f-4b94-981f-b8ad118630b0
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4646783349506555264}
+        m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 49deb059-38e4-41af-a134-ac39c4259555
     m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
@@ -218,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2834727212144857295}
   condition: {fileID: 8284406793034050722}
+  interaction: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!114 &2834727212144857295
 MonoBehaviour:
@@ -285,6 +301,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInventoryOpen: 0
+--- !u!114 &4646783349506555264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880777417373658690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c467ee877d24af74dbf38f2dd0f15675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptText: {fileID: 0}
+  currentInteractGameObject: {fileID: 0}
+  currentInteractObject: {fileID: 0}
+  checkRate: 0.05
+  maxCheckDistance: 3
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  inventoryController: {fileID: 0}
+--- !u!114 &1140606305927170877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880777417373658690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8470b6e1fe7966548bb135c2fe564b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  structureUIDataSO: {fileID: 11400000, guid: 57c8d2023c11d7e48a680903521eee7b, type: 2}
+  objectData: {fileID: 11400000, guid: 656de9dd69c887049979d5d59052526e, type: 2}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  gridSize: 0.5
+  rotateAmount: 45
+--- !u!114 &8684059659730169197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880777417373658690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bf5d1bd0b59e643b7b6340351b6a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7658093230184447728
 GameObject:
   m_ObjectHideFlags: 0
