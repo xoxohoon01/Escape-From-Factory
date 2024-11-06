@@ -1,6 +1,5 @@
 ﻿public class Battery : Object, IInteractable ,IUseable
 {
-    public ItemData itemdata;
 
     public bool IsObtainable()
     {
@@ -13,6 +12,6 @@
 
     public void UseItem()
     {
-
+        
     }
 }

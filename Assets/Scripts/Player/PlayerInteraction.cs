@@ -9,7 +9,8 @@ public class PlayerInteraction : MonoBehaviour
 {
     public TextMeshProUGUI promptText;
     private Camera camera;
-    public Object currentInteractGameObject;
+    public GameObject currentInteractGameObject;
+    public Object currentInteractObject;
     private IInteractable currentInteractable;
 
     public float checkRate = 0.05f;
@@ -20,7 +21,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Awake()
     {
-        inventoryController = GetComponent<InventoryController>;
+        inventoryController = GetComponent<InventoryController>();
     }
     private void Start()
     {
@@ -47,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if ( currentInteractable.IsObtainable())
         {
-            inventoryController.Inventory.AddItem(currentInteractGameObject.itemData);
+            inventoryController.inventory.AddItem(currentInteractObject.itemData);
         }
         else
         {
@@ -69,6 +70,7 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     currentInteractGameObject = hit.collider.gameObject;
                     currentInteractable = hit.collider.GetComponent<IInteractable>();
+                    currentInteractObject = hit.collider.GetComponent<Object>();
                     SetPromptText();
                 }
             }
