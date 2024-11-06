@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType
-{
-    Consumable,
-    Resource
-}
+
 
 [CreateAssetMenu(fileName = "ObtainableObjectSO", menuName = "ScriptableObject/ObtainableObjectSO", order = 0)]
 public class ObtainableObjectSO : ScriptableObject
