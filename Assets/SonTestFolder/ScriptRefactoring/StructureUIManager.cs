@@ -85,22 +85,20 @@ public class StructureUIManager : MonoBehaviour
 
     private void OnBuildStructure()
     {
-        SonUIManager.Instance.StructureUIManager.SetActive(false);
-        SonUIManager.Instance.BuildingUI.SetActive(true);
-        //UIManager.Instance.StructureUIManager.SetActive(false);
-        //UIManager.Instance.BuildingUI.SetActive(true);
+        UIManager.Instance.StructureUIManager.SetActive(false);
+        UIManager.Instance.BuildingUI.SetActive(true);
     }
 
     private void OnMoveStructure()
     {
-        SonUIManager.Instance.StructureUIManager.SetActive(false);
+        UIManager.Instance.StructureUIManager.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         menuData.RaiseMoveEvent();
     }
 
     private void OnRemoveStructure()
     {
-        SonUIManager.Instance.StructureUIManager.SetActive(false);
+        UIManager.Instance.StructureUIManager.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         menuData.RaiseDestroyEvent();
     }
