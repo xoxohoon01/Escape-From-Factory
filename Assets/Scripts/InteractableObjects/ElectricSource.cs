@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ElectricSource : Object, IInteractable
+public class ElectricSource : InteractableObject, IInteractable
 {
     public bool isOn;
     public int MaxPower;

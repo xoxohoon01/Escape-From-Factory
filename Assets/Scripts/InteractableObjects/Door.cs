@@ -7,7 +7,7 @@ public enum DoorType
     Sliding, // 슬라이드형, 위아래로 여닫힘. 예 : 셔터
     Swinging // 회전형, 회전하며 여닫힘. 예 : 일반적인 문
 }
-public class Door : Object, IInteractable
+public class Door : InteractableObject, IInteractable
 {
     [Header(" Info ")]
     [SerializeField] private DoorType type;

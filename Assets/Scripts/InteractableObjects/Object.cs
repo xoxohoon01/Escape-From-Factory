@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Object : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
     public InteractableObjectSO objectSO;
     public ItemData itemData;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Storage : Object, IInteractable
+public class Storage : InteractableObject, IInteractable
 {
     public Inventory StorageInventory;
     public bool IsObtainable()

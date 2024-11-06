@@ -45,12 +45,23 @@ public class PlayerCondition : Unit
         onHPChanged?.Invoke();
     }
 
+    public void SubtractHP(float amount)
+    {
+        HP.Subtract(amount);
+        onHPChanged?.Invoke();
+    }
+
     public void HealHunger(float amount)
     {
         Hunger.Add(amount);
         onHungerChanged?.Invoke();
     }
 
+    public void SubtractHunger(float amount)
+    {
+        Hunger.Subtract(amount);
+        onHungerChanged?.Invoke();
+    }
 
     public void Die()
     {
