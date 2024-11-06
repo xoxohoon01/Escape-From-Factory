@@ -15,5 +15,7 @@ MonoBehaviour:
   Name: "\uC154\uD130"
   Description: "\uAC74\uBB3C\uC744 \uB6AB\uACE0 \uC62C\uB77C\uAC00\uB294\uAC74 \uBB34\uC2DC\uD558\uC138\uC694"
   isCunstructible: 1
+  MaxCount: 0
+  durability: 50
   icon: {fileID: 0}
   prefab: {fileID: 0}

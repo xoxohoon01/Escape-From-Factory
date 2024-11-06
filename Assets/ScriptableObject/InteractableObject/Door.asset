@@ -16,5 +16,7 @@ MonoBehaviour:
   Description: "\uB2F9\uAE30\uC2DC\uC624 \uB77C\uACE0 \uC801\uD600\uB3C4 \uC544\uBB34\uB3C4
     \uC548\uC77D\uC2B5\uB2C8\uB2E4."
   isCunstructible: 1
+  MaxCount: 0
+  durability: 50
   icon: {fileID: 0}
   prefab: {fileID: 0}
