@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4168833209243932449}
   - component: {fileID: 2540761771800654244}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8358953617143435354}
   - component: {fileID: 3347640481713897570}
   - component: {fileID: 481422086537670077}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StandLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 1221499461674075102}
   - component: {fileID: 5928062978311411444}
   - component: {fileID: 5837034393591857879}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Old_USSR_Lamp_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
