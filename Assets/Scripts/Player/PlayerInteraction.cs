@@ -10,7 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     public TextMeshProUGUI promptText;
     private Camera camera;
     public GameObject currentInteractGameObject;
-    public Object currentInteractObject;
+    public InteractableObject currentInteractObject;
     private IInteractable currentInteractable;
 
     public float checkRate = 0.05f;
@@ -49,6 +49,7 @@ public class PlayerInteraction : MonoBehaviour
         if ( currentInteractable.IsObtainable())
         {
             inventoryController.inventory.AddItem(currentInteractObject.objectSO);
+            Destroy(currentInteractGameObject.gameObject);
         }
         else
         {
@@ -70,7 +71,7 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     currentInteractGameObject = hit.collider.gameObject;
                     currentInteractable = hit.collider.GetComponent<IInteractable>();
-                    currentInteractObject = hit.collider.GetComponent<Object>();
+                    currentInteractObject = hit.collider.GetComponent<InteractableObject>();
                     SetPromptText();
                 }
             }

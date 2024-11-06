@@ -3,7 +3,7 @@
     Wood,
     Iron,
 }
-public class Material : Object, IInteractable
+public class Material : InteractableObject, IInteractable
 {
     public MaterailType type;
     public bool IsObtainable()

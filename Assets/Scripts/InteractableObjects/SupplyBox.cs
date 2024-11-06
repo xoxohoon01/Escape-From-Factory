@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class SupplyBox : Object
+public class SupplyBox : InteractableObject
 {
     public List<GameObject> Supplys;
     public override void DestroyObject()

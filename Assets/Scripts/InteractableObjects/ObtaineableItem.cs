@@ -1,5 +1,5 @@
 ﻿
-public class ObtaineableItem : Object, IInteractable
+public class ObtaineableItem : InteractableObject, IInteractable
 {
     public bool IsObtainable()
     {
