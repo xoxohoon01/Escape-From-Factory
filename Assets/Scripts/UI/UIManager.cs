@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
                 if (currentInventory.Slots[i] != null)
                 {
                     InventoryUI.Slots[i].image.sprite = currentInventory.Slots[i].Item.icon;
+                    InventoryUI.Slots[i].stackText.text = currentInventory.Slots[i].Stack.ToString();
                 }
             }
         }
@@ -73,6 +74,7 @@ public class UIManager : MonoBehaviour
                 if (currentToolbar.Slots[i] != null)
                 {
                     ToolbarUI.Slots[i].image.sprite = currentToolbar.Slots[i].Item.icon;
+                    ToolbarUI.Slots[i].stackText.text = currentToolbar.Slots[i].Stack.ToString();
                 }
             }
         }

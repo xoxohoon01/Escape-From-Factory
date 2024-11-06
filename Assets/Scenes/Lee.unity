@@ -512,7 +512,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1491508258}
+  - {fileID: 1789467038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1533,11 +1533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e77be06da2d104d9142b159c6fffe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &1491508258 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7497168118636332567, guid: 3dc724e87b1e29d49a2d3edea57b9a11, type: 3}
-  m_PrefabInstance: {fileID: 1890776237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1559077741 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4664308040374528912, guid: d10fdd23dfdb30a408a4020c3baa6905, type: 3}
@@ -1663,7 +1658,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
---- !u!1001 &1890776237
+--- !u!1001 &1789467037
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2484,10 +2479,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc724e87b1e29d49a2d3edea57b9a11, type: 3}
---- !u!114 &1890776238 stripped
+--- !u!224 &1789467038 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7497168118636332567, guid: 3dc724e87b1e29d49a2d3edea57b9a11, type: 3}
+  m_PrefabInstance: {fileID: 1789467037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1789467039 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8109134376898090716, guid: 3dc724e87b1e29d49a2d3edea57b9a11, type: 3}
-  m_PrefabInstance: {fileID: 1890776237}
+  m_PrefabInstance: {fileID: 1789467037}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -2885,7 +2885,7 @@ PrefabInstance:
     - target: {fileID: 8752483914093734596, guid: 091de7c8fb6c8c04c87ea2b0664b83fe, type: 3}
       propertyPath: Inventory
       value: 
-      objectReference: {fileID: 1890776238}
+      objectReference: {fileID: 0}
     - target: {fileID: 8752483914093734596, guid: 091de7c8fb6c8c04c87ea2b0664b83fe, type: 3}
       propertyPath: ToolbarUI
       value: 
@@ -2897,11 +2897,11 @@ PrefabInstance:
     - target: {fileID: 8752483914093734596, guid: 091de7c8fb6c8c04c87ea2b0664b83fe, type: 3}
       propertyPath: InventoryUI
       value: 
-      objectReference: {fileID: 1890776238}
+      objectReference: {fileID: 1789467039}
     - target: {fileID: 8752483914093734596, guid: 091de7c8fb6c8c04c87ea2b0664b83fe, type: 3}
       propertyPath: uiInventory
       value: 
-      objectReference: {fileID: 1890776238}
+      objectReference: {fileID: 0}
     - target: {fileID: 8752483914093734596, guid: 091de7c8fb6c8c04c87ea2b0664b83fe, type: 3}
       propertyPath: ToolbarCanvas
       value: 
