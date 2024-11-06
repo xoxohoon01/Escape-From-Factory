@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCondition : MonoBehaviour
+public class EnemyCondition : Unit
 {
     public EnemyConditionSO SO;
 

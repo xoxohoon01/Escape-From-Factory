@@ -6,13 +6,14 @@ public class TriggerDetector : MonoBehaviour
 {
     private UnityEngine.Material originalMaterial;
     private UnityEngine.Material warningMaterial;
-
+    private Renderer renderer;
     public bool Istrigger { get; private set; }
 
     private void Start()
     {
+        renderer = GetComponent<Renderer>();
         int interactableLayer = LayerMask.NameToLayer("Interactable");
-
+        originalMaterial = renderer.material;
         warningMaterial = new UnityEngine.Material(Shader.Find("Standard"));
         warningMaterial.color = new Color(1, 0, 0, 0.5f);
         warningMaterial.SetFloat("_Mode", 2);
@@ -32,7 +33,7 @@ public class TriggerDetector : MonoBehaviour
             Renderer renderer = other.GetComponent<Renderer>();
             if (renderer != null)
             {
-                originalMaterial = renderer.material;
+                //originalMaterial = renderer.material;
                 renderer.material = warningMaterial;
                 Istrigger = true;
             }
