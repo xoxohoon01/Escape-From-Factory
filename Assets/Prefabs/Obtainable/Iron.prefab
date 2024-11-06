@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6949209120727550538}
   - component: {fileID: 4305353579984539103}
   - component: {fileID: 5448462051159629053}
-  - component: {fileID: 1598307316290070306}
+  - component: {fileID: 2273464662966935166}
   m_Layer: 7
   m_Name: Iron
   m_TagString: Untagged
@@ -135,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1598307316290070306
+--- !u!114 &2273464662966935166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,8 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1588574636156737738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a22acbc565dcdb448f4a5485537ac74, type: 3}
+  m_Script: {fileID: 11500000, guid: 94822ff3aa41de14a8cb3e398561b11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectSO: {fileID: 11400000, guid: ed36ba89bde113542836ee551cf48bc7, type: 2}
-  type: 1
+  objectSO: {fileID: 11400000, guid: fd979ac9e9071e54d92c9a4f0be4002b, type: 2}

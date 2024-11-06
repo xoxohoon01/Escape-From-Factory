@@ -17,5 +17,5 @@ MonoBehaviour:
   isCunstructible: 0
   MaxCount: 4
   durability: 25
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 35c720b0c422d584192c73e89ed0a0af, type: 3}
   prefab: {fileID: 7497580473578524714, guid: 6eeca8d20acd62b4b8d1fe3d58319c34, type: 3}

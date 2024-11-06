@@ -53,10 +53,10 @@ public class Door : Object, IInteractable
 
     }
 
-    public void Update()
-    {
-        InvokeRepeating("Interact", 1, 2);
-    }
+    //public void Update()
+    //{
+    //    InvokeRepeating("Interact", 1, 2);
+    //}
 
     public IEnumerator CoOpenDoor()
     {
