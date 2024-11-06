@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TriggerDetector : MonoBehaviour
 {
-    private Material originalMaterial;
-    private Material warningMaterial;
+    private UnityEngine.Material originalMaterial;
+    private UnityEngine.Material warningMaterial;
 
     public bool Istrigger { get; private set; }
 
@@ -13,7 +13,7 @@ public class TriggerDetector : MonoBehaviour
     {
         int interactableLayer = LayerMask.NameToLayer("Interactable");
 
-        warningMaterial = new Material(Shader.Find("Standard"));
+        warningMaterial = new UnityEngine.Material(Shader.Find("Standard"));
         warningMaterial.color = new Color(1, 0, 0, 0.5f);
         warningMaterial.SetFloat("_Mode", 2);
         warningMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);

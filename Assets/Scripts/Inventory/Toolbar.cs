@@ -6,6 +6,7 @@ using UnityEngine;
 public class Toolbar
 {
     public List<InteractableObjectSO> Items = new List<InteractableObjectSO>(new InteractableObjectSO[10]);
+    public InteractableObjectSO currentItem { get; private set; }
 
     // 빠른 등록 (툴바의 1번부터 빈 곳에 아이템 등록)
     public void AddItem(InteractableObjectSO item)
