@@ -80,6 +80,10 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    private void Use()
+    {
+    }
+
     private void Awake()
     {
         inventory = new Inventory();
