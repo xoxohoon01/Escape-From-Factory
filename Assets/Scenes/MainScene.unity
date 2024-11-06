@@ -1577,17 +1577,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000012564366324, guid: 36667f34d4b750c4695e409fb89b51f8, type: 3}
   m_PrefabInstance: {fileID: 3685663793514130422}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &608130181 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1140606305927170877, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-  m_PrefabInstance: {fileID: 1918926971}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8470b6e1fe7966548bb135c2fe564b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &608956508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010940606070, guid: fcbcdad4411dafb489c6994b483d02a6, type: 3}
@@ -5662,46 +5651,6 @@ PrefabInstance:
     - target: {fileID: 880777417373658690, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
-      value: 35ab5cf5-9345-451d-a85e-30820eaa79e4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
-      value: Player/BuildMode[/Keyboard/b]
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 608130181}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnBuildMode
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BuildingController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657142076914272300, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
-      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4352134906495351991, guid: 2b9147de4f02ecc4188b524c0e068f38, type: 3}
       propertyPath: m_LocalPosition.x

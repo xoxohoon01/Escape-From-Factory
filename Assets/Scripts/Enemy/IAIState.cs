@@ -11,6 +11,7 @@ public interface IAIState
 }
 
 
+// 멈춘 상태
 public class IdleState : IAIState
 {
     private float idleDuration = 3f;
@@ -32,6 +33,7 @@ public class IdleState : IAIState
             aiController.SwitchState(new WalkingState());
         }
 
+        // 추적 범위 안에 플레이어 접근 시
         if (aiController.CheckForPlayer())
         {
             aiController.SwitchState(new AttackingState());
@@ -44,7 +46,7 @@ public class IdleState : IAIState
     }
 }
 
-
+// 걷는 상태
 public class WalkingState : IAIState
 {
     private float walkDuration = 5f;
@@ -67,6 +69,7 @@ public class WalkingState : IAIState
             aiController.SwitchState(new IdleState());
         }
 
+        // 추적 범위 안에 플레이어 접근 시
         if (aiController.CheckForPlayer())
         {
             aiController.SwitchState(new AttackingState());
@@ -79,7 +82,7 @@ public class WalkingState : IAIState
     }
 }
 
-
+// 추적 상태 ( 접근 시 공격 )
 public class AttackingState : IAIState
 {
     public void EnterState(EnemyAIController aiController)
@@ -94,14 +97,18 @@ public class AttackingState : IAIState
     public void UpdateState(EnemyAIController aiController)
     {
         Debug.Log(aiController.CheckForPlayer());
+
+        // 플레이어가 추적 범위 벗어날 시 멈춘 상태로 전환
         if (!aiController.CheckForPlayer())
         {
             aiController.SwitchState(new IdleState());
             return;
         }
 
+        // aiController의 Target 위치로 길찾기
         aiController.agent.SetDestination(aiController.Target.position);
 
+        // 공격 가능 범위인지 확인하는 절댓값
         float distanceToPlayer = Vector3.Distance(aiController.transform.position, aiController.Target.position);
 
         if (distanceToPlayer <= aiController.attackRange)
