@@ -45,4 +45,9 @@ public class Toolbar
             UIManager.Instance.UpdateInventory();
         }
     }
+
+    public void Select(int index)
+    {
+        currentItem = Slots[index];
+    }
 }
