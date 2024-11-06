@@ -2448,6 +2448,8 @@ GameObject:
   - component: {fileID: 3185929765321708075}
   - component: {fileID: 5361504057631220086}
   - component: {fileID: -4276950285251384920}
+  - component: {fileID: 6267008870790637237}
+  - component: {fileID: 9000779348664966348}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -2518,7 +2520,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &3985049757237479078
 CapsuleCollider:
@@ -2575,11 +2577,52 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8706122049803390991}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ba5dd465a3afbb4bb25d50f274e5f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6267008870790637237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706122049803390991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e36d7a3cae5bc4dba80c7b3d55ccce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  animator: {fileID: 0}
+  Target: {fileID: 0}
+  detectionRange: 6
+  attackRange: 1
+--- !u!195 &9000779348664966348
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706122049803390991}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 4
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8724630237635402666
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6552456229556933456}
   - component: {fileID: 5750021007597959168}
   - component: {fileID: 1883870152346081835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Disk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,6 +157,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e674d7edd28d779438249d02fe04396d, type: 3}
       propertyPath: m_Name
       value: Floppy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e674d7edd28d779438249d02fe04396d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

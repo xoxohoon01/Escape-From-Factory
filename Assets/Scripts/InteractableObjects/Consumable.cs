@@ -14,7 +14,7 @@ public class Consumable : Object, IInteractable ,IUseable
     }
     public void Interact()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public void UseItem()
