@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874d021a26d6ecc429403a23ee2a2982, type: 3}
+  m_Name: SupplyBox
+  m_EditorClassIdentifier: 
+  Name: "\uBCF4\uAE09\uC0C1\uC790"
+  Description: "\uBD80\uC234\uC11C \uB0B4\uC6A9\uBB3C\uC744 \uD68D\uB4DD\uD558\uC138\uC694"
+  isCunstructible: 0
+  durability: 15
+  icon: {fileID: 0}
+  prefab: {fileID: 1319019744018932851, guid: 4e1a288fd75f33640928a5686ebb7bb2, type: 3}

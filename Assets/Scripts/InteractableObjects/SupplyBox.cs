@@ -4,12 +4,10 @@ using UnityEngine;
 public class SupplyBox : Object
 {
     public List<GameObject> Supplys;
-    
-
-
     public override void DestroyObject()
     {
-        // TODO 랜덤 아이템 스폰
+        int num = Random.Range(0, Supplys.Count);
+        Instantiate(Supplys[num], this.transform);
         DestroyObject();
     }
 }

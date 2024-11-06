@@ -58,9 +58,10 @@ public class UIManager : MonoBehaviour
             // 인벤토리 아이템 이미지 변경
             for (int i = 0; i < InventoryUI.Slots.Count; i++)
             {
-                if (currentInventory.Items[i] != null)
+                if (currentInventory.Slots[i] != null)
                 {
-                    InventoryUI.Slots[i].image.sprite = currentInventory.Items[i].icon;
+                    InventoryUI.Slots[i].image.sprite = currentInventory.Slots[i].Item.icon;
+                    InventoryUI.Slots[i].stackText.text = currentInventory.Slots[i].Stack.ToString();
                 }
             }
         }
@@ -70,9 +71,10 @@ public class UIManager : MonoBehaviour
             // 툴바 이미지 변경
             for (int i = 0; i < ToolbarUI.Slots.Count; i++)
             {
-                if (currentToolbar.Items[i] != null)
+                if (currentToolbar.Slots[i] != null)
                 {
-                    ToolbarUI.Slots[i].image.sprite = currentToolbar.Items[i].icon;
+                    ToolbarUI.Slots[i].image.sprite = currentToolbar.Slots[i].Item.icon;
+                    ToolbarUI.Slots[i].stackText.text = currentToolbar.Slots[i].Stack.ToString();
                 }
             }
         }

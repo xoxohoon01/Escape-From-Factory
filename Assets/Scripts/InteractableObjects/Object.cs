@@ -1,11 +1,10 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Object : MonoBehaviour
 {
     public InteractableObjectSO objectSO;
-
-    public void TakeDamage(int damage)
+    public ItemData itemData;
+    public void TakeDamage(float damage)
     {
         float dur = objectSO.durability;
         dur -= damage;

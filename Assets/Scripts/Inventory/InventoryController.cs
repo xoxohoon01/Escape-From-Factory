@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class InventoryController : MonoBehaviour
 {
+    private Player player;
+
     public bool isInventoryOpen = false;
     public Inventory inventory = new Inventory();
     public Toolbar toolbar = new Toolbar();
@@ -40,43 +42,43 @@ public class InventoryController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            currentItem = toolbar.Items[0];
+            currentItem = toolbar.Slots[0].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha2))
         {
-            currentItem = toolbar.Items[1];
+            currentItem = toolbar.Slots[1].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha3))
         {
-            currentItem = toolbar.Items[2];
+            currentItem = toolbar.Slots[2].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha4))
         {
-            currentItem = toolbar.Items[3];
+            currentItem = toolbar.Slots[3].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha5))
         {
-            currentItem = toolbar.Items[4];
+            currentItem = toolbar.Slots[4].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha6))
         {
-            currentItem = toolbar.Items[5];
+            currentItem = toolbar.Slots[5].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha7))
         {
-            currentItem = toolbar.Items[6];
+            currentItem = toolbar.Slots[6].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha8))
         {
-            currentItem = toolbar.Items[7];
+            currentItem = toolbar.Slots[7].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha9))
         {
-            currentItem = toolbar.Items[8];
+            currentItem = toolbar.Slots[8].Item;
         }
         else if (Input.GetKey(KeyCode.Alpha0))
         {
-            currentItem = toolbar.Items[9];
+            currentItem = toolbar.Slots[9].Item;
         }
     }
 
@@ -86,6 +88,8 @@ public class InventoryController : MonoBehaviour
 
     private void Awake()
     {
+        player = GetComponent<Player>();
+
         inventory = new Inventory();
         toolbar = new Toolbar();
     }

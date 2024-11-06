@@ -8,7 +8,10 @@ public class ElectricSource : Object, IInteractable
     public float PowerRange;
 
     public LayerMask powerableLayer;
-
+    public bool IsObtainable()
+    {
+        return false;
+    }
     public void Interact()
     {
         if (!isOn)

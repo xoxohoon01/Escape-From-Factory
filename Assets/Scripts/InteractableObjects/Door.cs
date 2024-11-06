@@ -31,7 +31,10 @@ public class Door : Object, IInteractable
         initialPosition = transform.position;
         initialRotation = transform.rotation;
     }
-
+    public bool IsObtainable()
+    {
+        return false;
+    }
     public void Interact()
     {
         if (isAnimating)
@@ -52,7 +55,7 @@ public class Door : Object, IInteractable
 
     public void Update()
     {
-        //InvokeRepeating("Interact", 1, 2);
+        InvokeRepeating("Interact", 1, 2);
     }
 
     public IEnumerator CoOpenDoor()
