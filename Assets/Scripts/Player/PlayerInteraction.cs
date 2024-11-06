@@ -9,14 +9,19 @@ public class PlayerInteraction : MonoBehaviour
 {
     public TextMeshProUGUI promptText;
     private Camera camera;
-    public GameObject currentInteractGameObject;
+    public Object currentInteractGameObject;
     private IInteractable currentInteractable;
 
     public float checkRate = 0.05f;
     private float lastCheckTime;
     public float maxCheckDistance;
     public LayerMask layerMask;
+    public InventoryController inventoryController;
 
+    private void Awake()
+    {
+        inventoryController = GetComponent<InventoryController>;
+    }
     private void Start()
     {
         camera = Camera.main;
@@ -31,10 +36,22 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && currentInteractable != null)
         {
-            currentInteractable.Interact();
+            InteractItem();
             currentInteractGameObject = null;
             currentInteractable = null;
             promptText.gameObject.SetActive(false);
+        }
+    }
+
+    public void InteractItem()
+    {
+        if ( currentInteractable.IsObtainable())
+        {
+            inventoryController.Inventory.AddItem(currentInteractGameObject.itemData);
+        }
+        else
+        {
+            currentInteractable.Interact();
         }
     }
 

@@ -20,7 +20,10 @@ public class LightSwitch : Object, IInteractable
             isOn = targetLight.enabled;
         }
     }
-
+    public bool IsObtainable()
+    {
+        return false;
+    }
     public void Interact()
     {
         ToggleLight();

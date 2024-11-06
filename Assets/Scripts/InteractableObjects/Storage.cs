@@ -2,8 +2,11 @@
 
 public class Storage : Object, IInteractable
 {
-    public Inventory StorageInventory; 
-
+    public Inventory StorageInventory;
+    public bool IsObtainable()
+    {
+        return false;
+    }
     public void Interact()
     {
         OpenInventory();
