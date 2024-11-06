@@ -11,11 +11,12 @@ public class Inventory
     {
         for (int i = 0; i < 30; i++)
         {
-            if (Slots[i] != null && Slots[i].Item.Name == item.name)
+            if (Slots[i] != null && Slots[i].Item.Name == item.Name)
             {
                 if (Slots[i].Stack < 99)
                 {
                     Slots[i].Stack += 1;
+                    UIManager.Instance.UpdateInventory();
                     return;
                 }
             }
