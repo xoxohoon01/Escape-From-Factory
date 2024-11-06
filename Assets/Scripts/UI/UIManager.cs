@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     // 인벤토리 UI (캔버스 하위 오브젝트)
     public SlotMenu InventoryUI;
     public SlotMenu ToolbarUI;
+    public GameObject StructureUIManager;
+    public GameObject BuildingUI;
 
     private static UIManager instance;
     public static UIManager Instance
