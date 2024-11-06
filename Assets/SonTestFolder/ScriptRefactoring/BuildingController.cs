@@ -1,21 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuildingController : MonoBehaviour
 {
+    public StructureUIDataSO structureUIDataSO;
+    public BuildUIDataSO objectData;
+    private StructurePool pool;
     private GameObject pendingObject;
+    private Transform parentObject;
+    private Camera camera;
     private Vector3 position;
     private RaycastHit hit;
+    private bool isHit;
+    private bool isBuildingMode;
+    private bool isMovingMode;
+    private bool isDestroyMode;
 
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float gridSize;
     [SerializeField] private float rotateAmount;
-    private bool isBuildingMode;
+
+
+    private void Awake()
+    {
+        pool = GetComponent<StructurePool>();
+        layerMask = LayerMask.GetMask("Ground");
+    }
+
+    private void OnEnable()
+    {
+        structureUIDataSO.OnObjectMoveEvent += OnMoveObject;
+        structureUIDataSO.OnObjectDestroyEvent += OnDestroyObject;
+        objectData.OnSelectedEvent += OnSelectObject;
+    }
+
+    private void OnDisable()
+    {
+        structureUIDataSO.OnObjectMoveEvent -= OnMoveObject;
+        structureUIDataSO.OnObjectDestroyEvent -= OnDestroyObject;
+        objectData.OnSelectedEvent -= OnSelectObject;
+    }
+
+    private void Start()
+    {
+        camera = Camera.main;
+        pool.InitializedPool(objectData.selectableObjects.Count);
+    }
 
     private void Update()
     {
-        if (pendingObject != null)
+        if (pendingObject == null && isMovingMode && !isDestroyMode)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SelectObjectToMove();
+            }
+        }
+        else if (pendingObject != null && (isBuildingMode || isMovingMode))
         {
             pendingObject.transform.position = new Vector3(
                 RoundToNearestGrid(position.x),
@@ -35,18 +78,34 @@ public class BuildingController : MonoBehaviour
                 RotateObject();
             }
         }
+
+        if (isDestroyMode)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                DestroyStucture();
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+        Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
         if (Physics.Raycast(ray, out hit, 1000, layerMask))
         {
-            position = hit.point;
+            isHit = true;
+            Vector3 _setPosition = hit.point;
+            _setPosition = _setPosition + 0.5f * transform.forward;
+            position = _setPosition;
+        }
+        else
+        {
+            isHit = false;
         }
     }
 
+    #region /grid move
     private float RoundToNearestGrid(float position)
     {
         float _xDiff = position % gridSize;
@@ -65,20 +124,110 @@ public class BuildingController : MonoBehaviour
         pendingObject.transform.position = _setPosition;
     }
 
-    public void RotateObject()
+    private void RotateObject()
     {
-        pendingObject.transform.Rotate(Vector3.up, rotateAmount);
+        pendingObject.transform.Rotate(Vector3.up, rotateAmount, Space.Self);
+    }
+    #endregion
+    
+    private void OnSelectObject(int index)
+    {
+        pendingObject = pool.GetObject(objectData.selectableObjects[index], index);
+        if (pendingObject.TryGetComponent(out BoxCollider _collider))
+        {
+            _collider.isTrigger = true;
+        }
+        isBuildingMode = true;
     }
 
-    public void SelectObject(int index)
+    private void PlaceObject()
     {
-        //pendingObject = Instantiate(objects[index].prefab, position, transform.rotation);
+        pendingObject.TryGetComponent(out TriggerDetector trigger);
+        if (isBuildingMode && !trigger.Istrigger)
+        {
+            if (parentObject == null)
+            {
+                parentObject = new GameObject("Structure").transform;
+            }
+
+            GameObject _newObject = Instantiate(pendingObject, pendingObject.transform.position, pendingObject.transform.rotation);
+            _newObject.transform.SetParent(parentObject, true);
+            if (_newObject.TryGetComponent(out BoxCollider _collider))
+            {
+                _collider.isTrigger = false;
+            }
+
+            pool.ReturnObject(pendingObject);
+            isBuildingMode = false;
+            pendingObject = null;
+            Cursor.lockState = CursorLockMode.None;
+            SonUIManager.Instance.BuildingUI.SetActive(true);
+        }
+        else if (isMovingMode)
+        {
+            if (parentObject == null)
+            {
+                parentObject = new GameObject("Structure").transform;
+            }
+            GameObject _movedObject = pendingObject;
+            pendingObject = null;
+            _movedObject.transform.SetParent(parentObject, true);
+            ToStructureUI(isBack: true);
+        }
     }
 
-
-    public void PlaceObject()
+    private void OnMoveObject()
     {
-        pendingObject = null;
+        isMovingMode = true;
+        layerMask &= ~(LayerMask.NameToLayer("Ground"));
+        layerMask = LayerMask.GetMask("Interactable");
     }
 
+    private void SelectObjectToMove()
+    {
+        if (!isHit)
+        {
+            ToStructureUI(isBack: true);
+        }
+        else if (hit.collider.TryGetComponent(out testStructureScript test))
+        {
+            pendingObject = hit.collider.gameObject;
+            pendingObject.transform.SetParent(transform, true);
+            ToStructureUI(isBack: false);
+        }
+    }
+
+    private void OnDestroyObject()
+    {
+        isDestroyMode = true;
+        layerMask &= ~(LayerMask.NameToLayer("Ground"));
+        layerMask = LayerMask.GetMask("Interactable");
+    }
+
+    private void DestroyStucture()
+    {
+        if(!isHit)
+        {
+            ToStructureUI(isBack:true);
+        }
+        else if (hit.collider.TryGetComponent(out testStructureScript test))
+        {
+            pendingObject = hit.collider.gameObject;
+            Destroy(pendingObject); 
+            ToStructureUI(isBack:true);
+        }
+    }
+
+    private void ToStructureUI(bool isBack)
+    {
+        layerMask &= ~(LayerMask.NameToLayer("Interactable"));
+        layerMask = LayerMask.GetMask("Ground");
+        if (isBack)
+        {
+            isMovingMode = false;
+            isDestroyMode = false;
+            Cursor.lockState = CursorLockMode.None;
+            SonUIManager.Instance.StructureUIManager.SetActive(true);
+        }
+    }
 }
