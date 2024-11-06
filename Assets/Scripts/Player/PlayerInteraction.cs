@@ -86,7 +86,6 @@ public class PlayerInteraction : MonoBehaviour
     private void SetPromptText()
     {
         promptText.gameObject.SetActive(true);
-        promptText.text ="SomeObject";
-        //promptText.text = curInteractable.GetInteractPrompt();
+        promptText.text = currentInteractObject.objectSO.Name;
     }
 }

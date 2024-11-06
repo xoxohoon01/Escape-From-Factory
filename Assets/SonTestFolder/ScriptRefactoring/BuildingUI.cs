@@ -81,7 +81,7 @@ public class BuildingUI : MonoBehaviour
                 Button _menuIconButton = _menuIconObject.AddComponent<Button>();
                 int _currentIndex = _i;
                 _menuIconButton.onClick.AddListener(() => objectData.RaiseSelectEvent(_currentIndex));
-                _menuIconButton.onClick.AddListener(() => SonUIManager.Instance.BuildingUI.SetActive(false));
+                _menuIconButton.onClick.AddListener(() => UIManager.Instance.BuildingUI.SetActive(false));
                 _menuIconButton.onClick.AddListener(() => ChangeCursorMode());
             }
             else
@@ -95,8 +95,8 @@ public class BuildingUI : MonoBehaviour
                 Image _exitImage = _exitObject.AddComponent<Image>();
 
                 Button _exitButton = _exitObject.AddComponent<Button>();
-                _exitButton.onClick.AddListener(()=> SonUIManager.Instance.BuildingUI.SetActive(false));
-                _exitButton.onClick.AddListener(() => SonUIManager.Instance.StructureUIManager.SetActive(true));
+                _exitButton.onClick.AddListener(()=> UIManager.Instance.BuildingUI.SetActive(false));
+                _exitButton.onClick.AddListener(() => UIManager.Instance.StructureUIManager.SetActive(true));
             }
         }
     }

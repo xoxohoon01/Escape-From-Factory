@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
+using UnityEngine.InputSystem;
 
 public class BuildingController : MonoBehaviour
 {
     public StructureUIDataSO structureUIDataSO;
     public BuildUIDataSO objectData;
+
     private StructurePool pool;
     private GameObject pendingObject;
     private Transform parentObject;
@@ -17,6 +20,7 @@ public class BuildingController : MonoBehaviour
     private bool isBuildingMode;
     private bool isMovingMode;
     private bool isDestroyMode;
+    private bool isOpen;
 
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float gridSize;
@@ -161,7 +165,7 @@ public class BuildingController : MonoBehaviour
             isBuildingMode = false;
             pendingObject = null;
             Cursor.lockState = CursorLockMode.None;
-            SonUIManager.Instance.BuildingUI.SetActive(true);
+            UIManager.Instance.BuildingUI.SetActive(true);
         }
         else if (isMovingMode)
         {
@@ -227,7 +231,30 @@ public class BuildingController : MonoBehaviour
             isMovingMode = false;
             isDestroyMode = false;
             Cursor.lockState = CursorLockMode.None;
-            SonUIManager.Instance.StructureUIManager.SetActive(true);
+            UIManager.Instance.StructureUIManager.SetActive(true);
+        }
+    }
+
+    public void OnBuildMode(InputAction.CallbackContext context)
+    {
+        isOpen = !isOpen;
+        if (context.phase == InputActionPhase.Started)
+        {
+            Debug.Log(isOpen);
+            OnToggle();
+            UIManager.Instance.StructureUIManager.SetActive(isOpen);
+        }
+    }
+
+    private void OnToggle()
+    {
+        if (isOpen)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
