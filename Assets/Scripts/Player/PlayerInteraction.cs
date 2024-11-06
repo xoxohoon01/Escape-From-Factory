@@ -48,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if ( currentInteractable.IsObtainable())
         {
-            inventoryController.inventory.AddItem(currentInteractObject.itemData);
+            inventoryController.inventory.AddItem(currentInteractObject.objectSO);
         }
         else
         {
