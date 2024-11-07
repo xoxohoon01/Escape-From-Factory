@@ -38,8 +38,7 @@ Tab키를 통해 접근할 수 있고, 상호작용[E]을 통해 인벤토리에
 - 2024.10.31(목) ~ 2024.11.07(목)
 
 ## 와이어프레임
-[<img width="556" alt="Screenshot 2024-10-20 at 07 51 32" src="https://github.com/user-attachments/assets/ff0b0b7d-c782-4fd3-b884-d25aed019ea2">
-<img width="772" alt="Screenshot 2024-10-20 at 07 51 49" src="https://github.com/user-attachments/assets/ad994364-8a0d-4183-9e15-c2d15432e18a">](https://www.figma.com/board/ttWzqbuGFE97y25eWtRpr7/16%EC%A1%B0%ED%94%BC%EA%B7%B8%EC%9E%BC?node-id=0-1&node-type=canvas&t=U3MYS6OR53p22wcM-0)
+(https://www.figma.com/board/ttWzqbuGFE97y25eWtRpr7/16%EC%A1%B0%ED%94%BC%EA%B7%B8%EC%9E%BC?node-id=0-1&node-type=canvas&t=U3MYS6OR53p22wcM-0)
 
 ## UML DIAGRAM
 ![image](https://github.com/user-attachments/assets/5e4d47fe-2543-475e-9756-18d494966773)
