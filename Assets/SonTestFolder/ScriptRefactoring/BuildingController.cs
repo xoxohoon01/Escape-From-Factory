@@ -166,7 +166,7 @@ public class BuildingController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             UIManager.Instance.BuildingUI.SetActive(true);
         }
-        else if (isMovingMode)
+        else if (isMovingMode && !trigger.Istrigger)
         {
             if (parentObject == null)
             {
