@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 
 public class Toolbar
@@ -50,4 +51,5 @@ public class Toolbar
     {
         currentItem = Slots[index];
     }
+
 }
