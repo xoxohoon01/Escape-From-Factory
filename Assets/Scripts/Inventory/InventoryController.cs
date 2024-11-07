@@ -116,16 +116,15 @@ public class InventoryController : MonoBehaviour
                         // SO에 저장된 ID값에 따라 기능 구현
                         if (toolbar.currentItem.Item.ID == 0)
                         {
-                            Debug.Log("체력 오름");
                             player.condition.HP.Add(50);
                         }
                         else if (toolbar.currentItem.Item.ID == 1)
                         {
-                            player.condition.Stamina.Add(50);
+                            player.condition.Hunger.Add(50);
                         }
                         else if (toolbar.currentItem.Item.ID == 2)
                         {
-                            player.condition.Hunger.Add(50);
+                            player.condition.Stamina.Add(50);
                         }
 
                         // 사용 시 아이템 소모
