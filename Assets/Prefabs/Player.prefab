@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4646783349506555264}
   - component: {fileID: 1140606305927170877}
   - component: {fileID: 8684059659730169197}
+  - component: {fileID: 8457689407642713464}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -41,6 +42,7 @@ Transform:
   m_Children:
   - {fileID: 1241954765707224190}
   - {fileID: 2612237176168183812}
+  - {fileID: 6193763553474844569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5293041671318618633
@@ -77,7 +79,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880777417373658690}
-  m_Material: {fileID: 13400000, guid: 07fb3adf24b23874cb1c63fc026e1eac, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -267,6 +269,7 @@ MonoBehaviour:
   condition: {fileID: 8284406793034050722}
   interaction: {fileID: 0}
   inventory: {fileID: 0}
+  equipment: {fileID: 0}
 --- !u!114 &2834727212144857295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +301,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880777417373658690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf69c46556663a6409c74a97301be427, type: 3}
   m_Name: 
@@ -385,6 +388,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8bf5d1bd0b59e643b7b6340351b6a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8457689407642713464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880777417373658690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4772f9bd074e14f88b1b6ed73fc699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEquipTool: {fileID: 0}
+  equipParent: {fileID: 6193763553474844569}
+--- !u!1 &1631907436683988274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6193763553474844569}
+  m_Layer: 8
+  m_Name: EquipPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6193763553474844569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631907436683988274}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.527, y: 1.24, z: 0.641}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4352134906495351991}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
 --- !u!1 &7658093230184447728
 GameObject:
   m_ObjectHideFlags: 0
