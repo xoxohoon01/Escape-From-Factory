@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874d021a26d6ecc429403a23ee2a2982, type: 3}
+  m_Name: Barrelx4
+  m_EditorClassIdentifier: 
+  ID: 0
+  Name: "\uBB3C\uD1B54\uAC1C"
+  Description: 
+  isCunstructible: 0
+  MaxCount: 0
+  durability: 0
+  icon: {fileID: 21300000, guid: 753ccaa0b93d6ed48a02a59f8d22b5fd, type: 3}
+  prefab: {fileID: 6286323382542772698, guid: 06a43b8e829acab48adf1c2e810fc243, type: 3}
+  Type: 0
+  equipPrefab: {fileID: 0}
