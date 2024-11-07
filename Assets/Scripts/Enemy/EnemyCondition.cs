@@ -9,13 +9,14 @@ public class EnemyCondition : Unit, IDamagable
     private float Health;
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         Health = SO.HP;
     }
 
     private void Subtract(float amount)
     {
         Health = Mathf.Max(Health - amount, 0);
-        if (Health == 0)
+        if (Health <= 0)
         {
             Die();
         }
