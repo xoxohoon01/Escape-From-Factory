@@ -39,43 +39,43 @@ public class InventoryController : MonoBehaviour
 
     private void SelectTool()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             toolbar.Select(0);
         }
-        else if (Input.GetKey(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             toolbar.Select(1);
         }
-        else if (Input.GetKey(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             toolbar.Select(2);
         }
-        else if (Input.GetKey(KeyCode.Alpha4))
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             toolbar.Select(3);
         }
-        else if (Input.GetKey(KeyCode.Alpha5))
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             toolbar.Select(4);
         }
-        else if (Input.GetKey(KeyCode.Alpha6))
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             toolbar.Select(5);
         }
-        else if (Input.GetKey(KeyCode.Alpha7))
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             toolbar.Select(6);
         }
-        else if (Input.GetKey(KeyCode.Alpha8))
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             toolbar.Select(7);
         }
-        else if (Input.GetKey(KeyCode.Alpha9))
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             toolbar.Select(8);
         }
-        else if (Input.GetKey(KeyCode.Alpha0))
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             toolbar.Select(9);
         }
@@ -94,6 +94,11 @@ public class InventoryController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SelectTool(int inventoryIndex)
+    {
+        toolbar.AddItem(inventory.Slots[inventoryIndex]);
     }
 
     public void OnUse(InputAction.CallbackContext context)
@@ -122,7 +127,16 @@ public class InventoryController : MonoBehaviour
                         {
                             player.condition.Hunger.Add(50);
                         }
-                        // 소모하기
+
+                        // 사용 시 아이템 소모
+                        if (toolbar.currentItem.Stack > 1)
+                        {
+                            toolbar.currentItem.Stack--;
+                        }
+
+                        // 인벤토리 업데이트
+                        UIManager.Instance.UpdateInventory();
+
                         break;
 
                     // 무기일 경우
