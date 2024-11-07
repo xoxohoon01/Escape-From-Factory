@@ -40,10 +40,6 @@ Tab키를 통해 접근할 수 있고, 상호작용[E]을 통해 인벤토리에
 ## 와이어프레임
 (https://www.figma.com/board/ttWzqbuGFE97y25eWtRpr7/16%EC%A1%B0%ED%94%BC%EA%B7%B8%EC%9E%BC?node-id=0-1&node-type=canvas&t=U3MYS6OR53p22wcM-0)
 
-## UML DIAGRAM
-![image](https://github.com/user-attachments/assets/5e4d47fe-2543-475e-9756-18d494966773)
-발표 자료: https://www.canva.com/design/DAGT7VXHfjg/gYfX2kfhSfPO6Rd2ZKIqWA/view?utm_content=DAGT7VXHfjg&utm_campaign=designshare&utm_medium=link&utm_source=editor
-
 ## Trouble Shooting
 https://www.notion.so/128df833f80680d7954bf9f5dc332bc4?p=136df833f80680e1a6f6d6e70eda0e50&pm=s
 노션 맨 마지막 게시판에 적었습니다.
