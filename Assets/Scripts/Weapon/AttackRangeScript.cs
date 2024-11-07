@@ -6,10 +6,10 @@ using UnityEngine;
 public class AttackRangeScript : MonoBehaviour
 {
     public EquipTool weapon;
-    List<Collider> colliders;
+    List<Collider> colliders = new List<Collider>();
     private void OnEnable()
     {
-        colliders = new List<Collider>();
+        colliders.Clear();
     }
     private void OnTriggerStay(Collider collider)
     {
