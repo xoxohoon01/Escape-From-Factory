@@ -7,6 +7,7 @@ public class TriggerDetector : MonoBehaviour
     private UnityEngine.Material originalMaterial;
     private UnityEngine.Material warningMaterial;
     private Renderer renderer;
+    private int triggerCounter=0;
     public bool Istrigger { get; private set; }
 
     private void Start()
@@ -30,13 +31,12 @@ public class TriggerDetector : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
-            Renderer renderer = other.GetComponent<Renderer>();
-            if (renderer != null)
+            if (triggerCounter==0) 
             {
-                //originalMaterial = renderer.material;
                 renderer.material = warningMaterial;
                 Istrigger = true;
             }
+            triggerCounter++;
         }
     }
 
@@ -44,8 +44,8 @@ public class TriggerDetector : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
-            Renderer renderer = other.GetComponent<Renderer>();
-            if (renderer != null && originalMaterial != null)
+            triggerCounter--;
+            if (originalMaterial != null && triggerCounter==0)
             {
                 renderer.material = originalMaterial;
                 Istrigger = false;

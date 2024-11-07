@@ -37,6 +37,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && currentInteractable != null)
         {
+            Debug.Log("d");
             InteractItem();
             currentInteractGameObject = null;
             currentInteractable = null;

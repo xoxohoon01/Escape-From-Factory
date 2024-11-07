@@ -2,14 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCondition : Unit
+public class EnemyCondition : Unit, IDamagable
 {
     public EnemyConditionSO SO;
-
-    private Condition HP;
-
+    private Animator animator;
+    private float Health;
     private void Awake()
     {
-        HP = new Condition(SO.HP);
+        Health = SO.HP;
     }
+
+    private void Subtract(float amount)
+    {
+        Health = Mathf.Max(Health - amount, 0);
+        if (Health == 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        animator.SetTrigger("death");
+        Destroy(gameObject, 3f);
+    }
+
+    public void TakePhysicalDamage(float damage)
+    {
+        Subtract(damage);
+    }
+
 }

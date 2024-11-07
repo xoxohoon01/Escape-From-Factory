@@ -22,5 +22,6 @@ public class InteractableObjectSO : ScriptableObject
     public Sprite icon;
     public GameObject prefab;
     public ItemType Type;
+    public GameObject equipPrefab;
     
 }

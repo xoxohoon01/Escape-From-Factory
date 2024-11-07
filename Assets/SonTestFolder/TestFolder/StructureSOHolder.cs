@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class testStructureScript : MonoBehaviour
+public class StructureSOHolder : MonoBehaviour
 {
     public InteractableObjectSO objectSO;
 

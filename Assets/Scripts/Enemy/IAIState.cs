@@ -96,8 +96,6 @@ public class AttackingState : IAIState
 
     public void UpdateState(EnemyAIController aiController)
     {
-        Debug.Log(aiController.CheckForPlayer());
-
         // 플레이어가 추적 범위 벗어날 시 멈춘 상태로 전환
         if (!aiController.CheckForPlayer())
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -78,6 +79,21 @@ public class InventoryController : MonoBehaviour
         {
             toolbar.Select(9);
         }
+
+        if (toolbar.currentItem != null && toolbar.currentItem.Item.Type == ItemType.Weapon)
+        {
+            if (player.equipment.currentEquipTool == null)
+            {
+                player.equipment.EquipNew(toolbar.currentItem.Item);
+            }
+            else if(player.equipment.currentEquipTool.TryGetComponent(out InteractableObject component))
+            {
+                if (component.objectSO != toolbar.currentItem.Item)
+                {
+                    player.equipment.EquipNew(toolbar.currentItem.Item);
+                }
+            }
+        }
     }
 
     public void OnUse(InputAction.CallbackContext context)
@@ -108,10 +124,10 @@ public class InventoryController : MonoBehaviour
                         }
                         // 소모하기
                         break;
-                        
+
                     // 무기일 경우
                     case ItemType.Weapon:
-                        // 때리기 Equipment
+                        player.equipment.OnAttack();
                         break;
                 }
             }

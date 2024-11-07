@@ -156,11 +156,10 @@ public class BuildingController : MonoBehaviour
 
             GameObject _newObject = Instantiate(pendingObject, pendingObject.transform.position, pendingObject.transform.rotation);
             _newObject.transform.SetParent(parentObject, true);
-            if (_newObject.TryGetComponent(out BoxCollider _collider))
-            {
-                _collider.isTrigger = false;
-            }
-
+            _newObject.TryGetComponent(out BoxCollider _collider);
+            _collider.isTrigger = false;
+            _newObject.TryGetComponent(out TriggerDetector detector);
+            Destroy(detector);
             pool.ReturnObject(pendingObject);
             isBuildingMode = false;
             pendingObject = null;
@@ -176,6 +175,10 @@ public class BuildingController : MonoBehaviour
             GameObject _movedObject = pendingObject;
             pendingObject = null;
             _movedObject.transform.SetParent(parentObject, true);
+            _movedObject.TryGetComponent(out BoxCollider _collider);
+            _collider.isTrigger = false;
+            _movedObject.TryGetComponent(out TriggerDetector detector);
+            Destroy(detector);
             ToStructureUI(isBack: true);
         }
     }
@@ -193,10 +196,13 @@ public class BuildingController : MonoBehaviour
         {
             ToStructureUI(isBack: true);
         }
-        else if (hit.collider.TryGetComponent(out testStructureScript test))
+        else if (hit.collider.TryGetComponent(out StructureSOHolder test))
         {
             pendingObject = hit.collider.gameObject;
             pendingObject.transform.SetParent(transform, true);
+            pendingObject.TryGetComponent(out BoxCollider _collider);
+            _collider.isTrigger = true;
+            pendingObject.AddComponent<TriggerDetector>();
             ToStructureUI(isBack: false);
         }
     }
@@ -214,7 +220,7 @@ public class BuildingController : MonoBehaviour
         {
             ToStructureUI(isBack:true);
         }
-        else if (hit.collider.TryGetComponent(out testStructureScript test))
+        else if (hit.collider.TryGetComponent(out StructureSOHolder test))
         {
             pendingObject = hit.collider.gameObject;
             Destroy(pendingObject); 
